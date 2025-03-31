@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - name: 🛒 Checkout
@@ -29,12 +30,41 @@ jobs:
       - name: 🪠 Run scraper
         run: python scripts/scrape.py
 
-      - name: ✅ Commit and push if changes
+      - name: 📅 Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [[ -n "$(git status --porcelain src/data.json scripts/executive_orders_proclamations.json)" ]]; then
+            echo "changed=1" >> $GITHUB_OUTPUT
+          else
+            echo "changed=0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 🌿 Create new branch
+        if: steps.changes.outputs.changed == 1
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git checkout -b data-update-${{ steps.date.outputs.date }}
           git add src/data.json scripts/executive_orders_proclamations.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update data"
-          git push https://${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git commit -m "Update data for ${{ steps.date.outputs.date }}"
+          git push origin data-update-${{ steps.date.outputs.date }}
+
+      - name: 🔄 Create Pull Request
+        if: success() && steps.changes.outputs.changed == 1
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update data for ${{ steps.date.outputs.date }}
+          title: "Data Update ${{ steps.date.outputs.date }}"
+          body: |
+            Automated data update from Federal Registry scraper
+
+            - Updated src/data.json
+            - Updated scripts/executive_orders_proclamations.json
+          branch: data-update-${{ steps.date.outputs.date }}
+          base: main
+          delete-branch: true
