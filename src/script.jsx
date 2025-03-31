@@ -149,7 +149,6 @@ function Footer() {
               aria-label="View source on GitHub"
             >
               <MarkGithubIcon size={20} />
-              <span>Source Code</span>
             </a>
             <a
               href="https://github.com/timheuer/eotrack/issues/"
