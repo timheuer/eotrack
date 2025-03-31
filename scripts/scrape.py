@@ -43,7 +43,7 @@ def format_documents(documents):
 
 def load_existing_data():
     try:
-        with open('../src/data.json', 'r') as f:
+        with open('src/data.json', 'r') as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return []
@@ -88,12 +88,12 @@ def main():
     
     # Save to both files
     # Save to original location for backwards compatibility
-    with open('executive_orders_proclamations.json', 'w') as f:
+    with open('scripts/executive_orders_proclamations.json', 'w') as f:
         json.dump(merged_documents, f, indent=2)
         
     # Save to src/data.json for the application
     os.makedirs('../src', exist_ok=True)
-    with open('../src/data.json', 'w') as f:
+    with open('src/data.json', 'w') as f:
         json.dump(merged_documents, f, indent=2)
 
     print(f"Saved {len(merged_documents)} documents to both JSON files.")
