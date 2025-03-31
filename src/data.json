@@ -334,8 +334,21 @@
     "title": "Ensuring Lawful Governance and Implementing the President's \"Department of Government Efficiency\" Deregulatory Initiative",
     "date": "2025-02-25",
     "url": "https://www.federalregister.gov/documents/2025/02/25/2025-03138/ensuring-lawful-governance-and-implementing-the-presidents-department-of-government-efficiency",
-    "status": "enacted",
-    "challenges": []
+    "status": "resolved",
+    "challenges": [
+      {
+        "title":"Public Citizen Inc el al v. Trump and Office of Management and Budget",
+        "url":"https://www.courtlistener.com/docket/69559444/public-citizen-inc-v-trump/"
+      },
+      {
+        "title":"Lentini v. DOGE",
+        "url":"https://www.courtlistener.com/docket/69559476/lentini-v-department-of-government-efficiency/"
+      },
+      {
+        "title":"American Public Health Assoc v. Office of Budget and Management",
+        "url":"https://www.courtlistener.com/docket/69559460/american-public-health-association-v-office-of-management-and-budget/"
+      }
+    ]
   },
   {
     "id": "14218",
@@ -790,8 +803,13 @@
     "title": "Restoring Accountability to Policy-Influencing Positions Within the Federal Workforce",
     "date": "2025-01-31",
     "url": "https://www.federalregister.gov/documents/2025/01/31/2025-02095/restoring-accountability-to-policy-influencing-positions-within-the-federal-workforce",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title":"National Treasury Employees Union v. Donald J. Trump",
+        "url":"https://www.courtlistener.com/docket/69560537/national-treasury-employees-union-v-trump/"
+      }
+    ]
   },
   {
     "id": "14170",
@@ -919,8 +937,21 @@
     "title": "Establishing and Implementing the President's \"Department of Government Efficiency\"",
     "date": "2025-01-29",
     "url": "https://www.federalregister.gov/documents/2025/01/29/2025-02005/establishing-and-implementing-the-presidents-department-of-government-efficiency",
-    "status": "enacted",
-    "challenges": []
+    "status": "resolved",
+    "challenges": [
+      {
+        "title":"Public Citizen Inc el al v. Trump and Office of Management and Budget",
+        "url":"https://www.courtlistener.com/docket/69559444/public-citizen-inc-v-trump/"
+      },
+      {
+        "title":"Lentini v. DOGE",
+        "url":"https://www.courtlistener.com/docket/69559476/lentini-v-department-of-government-efficiency/"
+      },
+      {
+        "title":"American Public Health Assoc v. Office of Budget and Management",
+        "url":"https://www.courtlistener.com/docket/69559460/american-public-health-association-v-office-of-management-and-budget/"
+      }
+    ]
   },
   {
     "id": "14157",

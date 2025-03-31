@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun } from "@phosphor-icons/react";
+import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle } from "@phosphor-icons/react";
 import { MarkGithubIcon } from '@primer/octicons-react';
 import data from './data.json';
 
@@ -81,19 +81,22 @@ function StatusIcon({ status }) {
   const ariaLabel = {
     enacted: 'Enacted executive order',
     challenged: 'Challenged executive order',
-    overturned: 'Overturned executive order'
+    overturned: 'Overturned executive order',
+    resolved: 'Resolved and enacted executive order'
   }[status];
 
   const tooltipText = {
     enacted: 'This executive order is currently in effect',
     challenged: 'This executive order is being challenged in court',
-    overturned: 'This executive order has been overturned'
+    overturned: 'This executive order has been overturned',
+    resolved: 'This executive order was challenged but resolved and remains in effect'
   }[status];
 
   const IconComponent = {
     enacted: Circle,
     challenged: Warning,
-    overturned: Octagon
+    overturned: Octagon,
+    resolved: CheckCircle
   }[status];
 
   if (!IconComponent) return null;
@@ -103,6 +106,7 @@ function StatusIcon({ status }) {
       className={`w-5 h-5 ${
         status === 'enacted' ? 'text-green-500' :
         status === 'challenged' ? 'text-yellow-500' :
+        status === 'resolved' ? 'text-green-500' :
         'text-red-500'
       }`}
       weight="fill"
@@ -114,13 +118,14 @@ function StatusIcon({ status }) {
 }
 
 // Legend component
-function StatusLegend() {
+function StatusLegend({ statusFilter, onStatusFilterChange }) {
   // Calculate counts
   const counts = React.useMemo(() => {
     const statusCounts = {
       enacted: 0,
       challenged: 0,
-      overturned: 0
+      overturned: 0,
+      resolved: 0
     };
     
     data.forEach(eo => {
@@ -135,16 +140,26 @@ function StatusLegend() {
       {[
         { status: 'enacted', label: 'Enacted', icon: Circle },
         { status: 'challenged', label: 'Challenged', icon: Warning },
+        { status: 'resolved', label: 'Resolved', icon: CheckCircle },
         { status: 'overturned', label: 'Overturned', icon: Octagon }
       ].map(({ status, label, icon: Icon }) => (
-        <div key={status} className="flex items-center gap-2">
+        <button
+          key={status}
+          onClick={() => onStatusFilterChange(status === statusFilter ? 'all' : status)}
+          className={`flex items-center gap-2 hover:opacity-80 transition-opacity duration-150 ${
+            status === statusFilter ? 'ring-2 ring-gray-300 dark:ring-gray-600 rounded-lg p-1' : 'p-1'
+          }`}
+          aria-pressed={status === statusFilter}
+          aria-label={`Filter by ${label} status`}
+        >
           <Icon className={`w-5 h-5 ${
             status === 'enacted' ? 'text-green-500' :
             status === 'challenged' ? 'text-yellow-500' :
+            status === 'resolved' ? 'text-green-500' :
             'text-red-500'
           }`} weight="fill" aria-hidden="true" />
           <span className="text-gray-700 dark:text-gray-300">{label} ({counts[status]})</span>
-        </div>
+        </button>
       ))}
     </div>
   );
@@ -211,6 +226,7 @@ function App() {
       .filter(eo => {
         const matchesSearch = searchQuery.toLowerCase() === '' || 
           eo.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          eo.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
           eo.challenges.some(c => c.title.toLowerCase().includes(searchQuery.toLowerCase()));
         
         const matchesStatus = statusFilter === 'all' || eo.status === statusFilter;
@@ -267,7 +283,10 @@ function App() {
             <p className="text-gray-700 dark:text-gray-300 mb-6">
               Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders and Proclamations of Donald J. Trump</a> in current term in the simplest way.
             </p>
-            <StatusLegend />
+            <StatusLegend 
+              statusFilter={statusFilter}  
+              onStatusFilterChange={setStatusFilter}
+            />
             
             {/* Search and filters */}
             <div className="mb-6 flex flex-col sm:flex-row gap-4" role="search">
@@ -275,7 +294,7 @@ function App() {
                 <MagnifyingGlass className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" aria-hidden="true" weight="bold" />
                 <input
                   type="search"
-                  placeholder="Search by title or case..."
+                  placeholder="Search by EO#, title, or case..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-150"
@@ -292,6 +311,7 @@ function App() {
                 <option value="enacted">Enacted</option>
                 <option value="challenged">Challenged</option>
                 <option value="overturned">Overturned</option>
+                <option value="resolved">Resolved</option>
               </select>
             </div>
           </div>
