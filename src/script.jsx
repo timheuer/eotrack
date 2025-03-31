@@ -152,13 +152,13 @@ function Footer() {
               <span>Source Code</span>
             </a>
             <a
-              href="https://github.com/timheuer/eotrack/issues/new"
+              href="https://github.com/timheuer/eotrack/issues/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors duration-150"
               aria-label="Report incorrect information"
             >
-              Report an Issue
+              Issue? Missing EO? Missing Case? Report an Issue
             </a>
           </div>
           <div className="flex items-center gap-4">
