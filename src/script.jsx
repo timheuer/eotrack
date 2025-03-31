@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle } from "@phosphor-icons/react";
+import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, Sparkle, CheckCircle } from "@phosphor-icons/react";
 import { MarkGithubIcon } from '@primer/octicons-react';
 import data from './data.json';
 
@@ -202,15 +202,54 @@ function Footer() {
   );
 }
 
+// Modal component
+function Modal({ isOpen, onClose, children, isLoading }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-auto">
+        <div className="p-6">
+          {isLoading ? (
+            <div className="flex flex-col items-center justify-center p-8">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white"></div>
+              <p className="mt-4 text-gray-600 dark:text-gray-300">Generating AI summary...</p>
+            </div>
+          ) : (
+            children
+          )}
+          <button
+            onClick={onClose}
+            className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Main application component
 function App() {
   const [executiveOrders] = React.useState(data);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [statusFilter, setStatusFilter] = React.useState("all");
+  const [selectedEO, setSelectedEO] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [sortConfig, setSortConfig] = React.useState({
     key: 'date',
     direction: 'desc'
   });
+
+  const handleSummaryClick = async (eo) => {
+    setSelectedEO(eo);
+    setIsLoading(true);
+    // TODO: Implement actual AI summary generation here
+    // Simulating API call with timeout
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsLoading(false);
+  };
 
   // Sorting function
   const handleSort = (key) => {
@@ -351,7 +390,18 @@ function App() {
                             {eo.id}
                           </a>
                         </td>
-                        <td className="p-4 align-top text-gray-900 dark:text-white">{eo.title}</td>
+                        <td className="p-4 align-top">
+                          <div className="group relative flex items-center gap-2">
+                            <span className="text-gray-900 dark:text-white">{eo.title}</span>
+                            <button
+                              onClick={() => handleSummaryClick(eo)}
+                              className="opacity-0 group-hover:opacity-100 focus:opacity-100 inline-flex items-center justify-center p-1 text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-100 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200"
+                              aria-label={`View AI Summary for ${eo.title}`}
+                            >
+                              <Sparkle size={16} weight="fill" />
+                            </button>
+                          </div>
+                        </td>
                         <td className="p-4 align-top whitespace-nowrap text-gray-700 dark:text-gray-300">
                           {formatDate(eo.date)}
                         </td>
@@ -385,6 +435,27 @@ function App() {
             </div>
           </div>
         </div>
+
+        <Modal
+          isOpen={selectedEO !== null}
+          onClose={() => setSelectedEO(null)}
+          isLoading={isLoading}
+        >
+          {selectedEO && (
+            <div className="prose dark:prose-invert max-w-none">
+              <h2 className="text-2xl font-bold mb-4">
+                AI Summary: {selectedEO.title}
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+          )}
+        </Modal>
+        
         <Footer />
       </div>
     </ThemeProvider>
