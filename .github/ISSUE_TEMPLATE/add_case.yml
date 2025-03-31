@@ -1,0 +1,86 @@
+name: ⚖️ Add Case to Existing EO
+description: Report a court case or other relevant case that should be added to an existing Executive Order
+labels: [enhancement, case-addition]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping us track cases related to Executive Orders! Please provide information about the case you'd like to add.
+  - type: input
+    id: eo-number
+    attributes:
+      label: Executive Order Number
+      description: The number of the Executive Order this case relates to
+      placeholder: e.g., 14100
+    validations:
+      required: true
+  - type: input
+    id: case-name
+    attributes:
+      label: Case Name
+      description: The official name of the case
+      placeholder: e.g., State of Washington v. Trump
+    validations:
+      required: true
+  - type: input
+    id: case-number
+    attributes:
+      label: Case Number/Citation
+      description: The official case number or citation
+      placeholder: e.g., No. 17-35105 (9th Cir. 2017)
+    validations:
+      required: true
+  - type: input
+    id: court
+    attributes:
+      label: Court
+      description: The court where the case was filed/heard
+      placeholder: e.g., U.S. Court of Appeals for the Ninth Circuit
+    validations:
+      required: true
+  - type: input
+    id: filing-date
+    attributes:
+      label: Filing/Decision Date
+      description: The date the case was filed or decided
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: case-summary
+    attributes:
+      label: Case Summary
+      description: Brief summary of the case and its relevance to the Executive Order
+      placeholder: Explain what the case is about and how it relates to or impacts the Executive Order...
+    validations:
+      required: true
+  - type: input
+    id: case-url
+    attributes:
+      label: Case URL
+      description: Link to the official court filing, opinion, or a reliable source about the case
+      placeholder: https://www.courts.gov/...
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Case Status
+      description: Current status of the case
+      options:
+        - Pending
+        - Decided
+        - Appealed
+        - Settled
+        - Dismissed
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Any additional context or information about this case
+      placeholder: Add any other relevant details here
+    validations:
+      required: false
