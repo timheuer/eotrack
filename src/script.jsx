@@ -319,12 +319,13 @@ function App() {
                         </td>
                         <td className="p-4 align-top">
                           {eo.challenges.length > 0 ? (
-                            <ul className="list-none space-y-2" aria-label={`Legal challenges for Executive Order ${eo.id}`}>
+                            <ul className="list-disc list-inside space-y-2 align-top" aria-label={`Legal challenges for Executive Order ${eo.id}`}>
                               {eo.challenges.map((challenge, index) => (
-                                <li key={index}>
+                                <li key={index} className="flex">
+                                  <span className="mr-2">•</span>
                                   <a 
                                     href={challenge.url}
-                                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150 inline-block"
+                                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={`View legal challenge: ${challenge.title}`}

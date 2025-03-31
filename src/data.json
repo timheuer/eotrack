@@ -868,8 +868,25 @@
     "title": "Protecting the Meaning and Value of American Citizenship",
     "date": "2025-01-29",
     "url": "https://www.federalregister.gov/documents/2025/01/29/2025-02007/protecting-the-meaning-and-value-of-american-citizenship",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title":"NY Immigration Coalition v. Donald J. Trump",
+        "url":"https://www.courtlistener.com/docket/69638232/new-york-immigration-coalition-v-donald-j-trump/?order_by=desc"
+      },
+      {
+        "title":"State of New Jersey v. Trump",
+        "url":"https://www.courtlistener.com/docket/69561497/state-of-new-jersey-v-trump/?order_by=desc"
+      },
+      {
+        "title":"New Hampshire Indonesian Community Support v. Trump",
+        "url":"https://www.courtlistener.com/docket/69560542/new-hampshire-indonesian-community-support-v-trump/?order_by=desc"
+      },
+      {
+        "title":"Stae of Washington v. Trump",
+        "url":"https://www.courtlistener.com/docket/69561931/state-of-washington-v-trump/?order_by=desc"
+      }
+    ]
   },
   {
     "id": "14159",
