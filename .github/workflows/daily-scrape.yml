@@ -34,7 +34,7 @@ jobs:
         id: date
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-      - name: Check for changes
+      - name: 🤔 Check for changes
         id: changes
         run: |
           if [[ -n "$(git status --porcelain src/data.json scripts/executive_orders_proclamations.json)" ]]; then
@@ -43,21 +43,13 @@ jobs:
             echo "changed=0" >> $GITHUB_OUTPUT
           fi
 
-      - name: 🌿 Create new branch
-        if: steps.changes.outputs.changed == 1
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git checkout -b data-update-${{ steps.date.outputs.date }}
-          git add src/data.json scripts/executive_orders_proclamations.json
-          git commit -m "Update data for ${{ steps.date.outputs.date }}"
-          git push origin data-update-${{ steps.date.outputs.date }}
-
       - name: 🔄 Create Pull Request
-        if: success() && steps.changes.outputs.changed == 1
+        if: steps.changes.outputs.changed == 1
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          branch: data-update-${{ steps.date.outputs.date }}
           commit-message: Update data for ${{ steps.date.outputs.date }}
           title: "Data Update ${{ steps.date.outputs.date }}"
           body: |
@@ -65,5 +57,3 @@ jobs:
 
             - Updated src/data.json
             - Updated scripts/executive_orders_proclamations.json
-          branch: data-update-${{ steps.date.outputs.date }}
-          base: main
