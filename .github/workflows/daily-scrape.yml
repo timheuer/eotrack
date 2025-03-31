@@ -67,4 +67,3 @@ jobs:
             - Updated scripts/executive_orders_proclamations.json
           branch: data-update-${{ steps.date.outputs.date }}
           base: main
-          delete-branch: true
