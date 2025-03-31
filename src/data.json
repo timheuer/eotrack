@@ -28,8 +28,13 @@
     "title": "Addressing Risks From Jenner & Block",
     "date": "2025-03-28",
     "url": "https://www.federalregister.gov/documents/2025/03/28/2025-05519/addressing-risks-from-jenner-and-block",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title":"Jenner and Block LLP v. US DOJ",
+        "url":"https://www.courtlistener.com/docket/69807126/jenner-block-llp-v-us-department-of-justice/"
+      }
+    ]
   },
   {
     "id": "14245",
@@ -124,8 +129,13 @@
     "title": "Continuing the Reduction of the Federal Bureaucracy",
     "date": "2025-03-20",
     "url": "https://www.federalregister.gov/documents/2025/03/20/2025-04868/continuing-the-reduction-of-the-federal-bureaucracy",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title":"Abramowitz v. Lake",
+        "url":"https://www.courtlistener.com/docket/69791808/abramowitz-v-lake/"
+      }
+    ]
   },
   {
     "id": "14237",
@@ -885,6 +895,14 @@
       {
         "title":"Stae of Washington v. Trump",
         "url":"https://www.courtlistener.com/docket/69561931/state-of-washington-v-trump/?order_by=desc"
+      },
+      {
+        "title": "Doe v. Trump",
+        "url":"https://www.courtlistener.com/docket/69560579/doe-v-trump/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc"
+      },
+      {
+        "title":"Thien Le v. Donald J Trump",
+        "url":"https://www.courtlistener.com/docket/69560620/thien-le-v-donald-j-trump/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc"
       }
     ]
   },

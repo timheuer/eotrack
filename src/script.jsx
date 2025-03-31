@@ -115,6 +115,21 @@ function StatusIcon({ status }) {
 
 // Legend component
 function StatusLegend() {
+  // Calculate counts
+  const counts = React.useMemo(() => {
+    const statusCounts = {
+      enacted: 0,
+      challenged: 0,
+      overturned: 0
+    };
+    
+    data.forEach(eo => {
+      statusCounts[eo.status]++;
+    });
+    
+    return statusCounts;
+  }, []);
+
   return (
     <div className="flex gap-8 mb-8" role="region" aria-label="Status legend">
       {[
@@ -128,7 +143,7 @@ function StatusLegend() {
             status === 'challenged' ? 'text-yellow-500' :
             'text-red-500'
           }`} weight="fill" aria-hidden="true" />
-          <span className="text-gray-700 dark:text-gray-300">{label}</span>
+          <span className="text-gray-700 dark:text-gray-300">{label} ({counts[status]})</span>
         </div>
       ))}
     </div>
@@ -249,6 +264,9 @@ function App() {
         <div className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
           <div className="max-w-screen-xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Executive Orders Tracker</h1>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders and Proclamations of Donald J. Trump</a> in current term in the simplest way.
+            </p>
             <StatusLegend />
             
             {/* Search and filters */}
