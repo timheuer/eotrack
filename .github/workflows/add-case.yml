@@ -23,6 +23,7 @@ jobs:
           script: |
             const body = context.payload.issue.body;
             const lines = body.split('\n');
+            console.log(lines);
             const data = {};
 
             for (let i = 0; i < lines.length; i++) {
