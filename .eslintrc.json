@@ -1,9 +1,13 @@
 {
   "root": true,
-  "plugins": ["json-format"],
+  "plugins": [
+    "json-format"
+  ],
   "overrides": [
     {
-      "files": ["*.json"],
+      "files": [
+        "*.json"
+      ],
       "parser": "jsonc-eslint-parser",
       "rules": {
         "json-format/require-space-after-colon": [
