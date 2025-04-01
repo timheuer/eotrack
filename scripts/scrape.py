@@ -64,6 +64,7 @@ def merge_documents(new_docs, existing_docs):
         # If document exists, preserve its challenges
         if doc_id in existing_lookup:
             doc['challenges'] = existing_lookup[doc_id].get('challenges', [])
+            doc['status'] = existing_lookup[doc_id].get('status', "enacted")
         
         merged.append(doc)
     
@@ -88,12 +89,12 @@ def main():
     
     # Save to both files
     # Save to original location for backwards compatibility
-    with open('scripts/executive_orders_proclamations.json', 'w') as f:
+    with open('scripts/executive_orders_proclamations.json', 'w', newline='') as f:
         json.dump(merged_documents, f, indent=2)
         
     # Save to src/data.json for the application
     os.makedirs('../src', exist_ok=True)
-    with open('src/data.json', 'w') as f:
+    with open('src/data.json', 'w', newline='') as f:
         json.dump(merged_documents, f, indent=2)
 
     print(f"Saved {len(merged_documents)} documents to both JSON files.")
