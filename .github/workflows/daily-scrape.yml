@@ -40,8 +40,10 @@ jobs:
         run: |
           if [[ -n "$(git status --porcelain src/data.json)" ]]; then
             echo "changed=1" >> $GITHUB_OUTPUT
+            echo "Changes detected in src/data.json"
           else
             echo "changed=0" >> $GITHUB_OUTPUT
+            echo "No changes detected in src/data.json"
           fi
 
       - name: 🔄 Create Pull Request
