@@ -26,16 +26,16 @@ jobs:
             console.log(lines);
             const data = {};
 
-            for (let i = 0; i < lines.length+1; i++) {
+            for (let i = 0; i < lines.length; i++) {
               const line = lines[i];
-              console.log(line);
-              if (line.includes('### Executive Order Number') && i + 1 < lines.length+1) {
+              console.log(`Line ${i}: ${line}`);
+              if (line.includes('### Executive Order Number') && i + 1 < lines.length) {
                 data.eoNumber = lines[i + 1].trim();
               }
-              if (line.includes('### Case Name') && i + 1 < lines.length+1) {
+              if (line.includes('### Case Name') && i + 1 < lines.length) {
                 data.caseName = lines[i + 1].trim();
               }
-              if (line.includes('### Case URL') && i + 1 < lines.length+1) {
+              if (line.includes('### Case URL') && i + 1 < lines.length) {
                 data.caseUrl = lines[i + 1].trim();
               }
             }
