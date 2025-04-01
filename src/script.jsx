@@ -281,7 +281,7 @@ function App() {
           <div className="max-w-screen-xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Executive Orders Tracker</h1>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders and Proclamations of Donald J. Trump</a> in current term in the simplest way.
+              Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders and Proclamations of Donald J. Trump</a> in current term in the simplest way. Links to the official presidential records are from the <a href="https://www.federalregister.gov/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Federal Registry</a>, which takes a few days from date of proclamations to register.
             </p>
             <StatusLegend 
               statusFilter={statusFilter}  
