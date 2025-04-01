@@ -83,7 +83,10 @@ jobs:
               eo.status = 'challenged';
             }
 
-            fs.writeFileSync('src/data.json', JSON.stringify(data, null, 2));
+            // Convert to JSON with 2 spaces indentation and ensure LF line endings
+            const jsonContent = JSON.stringify(data, null, 2).replace(/\r\n/g, '\n');
+            // Ensure there's exactly one newline at the end of file
+            fs.writeFileSync('src/data.json', jsonContent + '\n');
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7

@@ -29,7 +29,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 🪠 Run scraper
-        run: python scripts/scrape.py
+        run: |
+          python scripts/scrape.py
+          # Convert any CRLF to LF and ensure single newline at EOF
+          perl -pi -e 's/\r\n/\n/g' src/data.json
+          echo >> src/data.json
 
       - name: 📅 Get current date
         id: date
@@ -38,7 +42,7 @@ jobs:
       - name: 🤔 Check for changes
         id: changes
         run: |
-          if [[ -n "$(git status --porcelain src/data.json scripts/executive_orders_proclamations.json)" ]]; then
+          if [[ -n "$(git status --porcelain src/data.json)" ]]; then
             echo "changed=1" >> $GITHUB_OUTPUT
           else
             echo "changed=0" >> $GITHUB_OUTPUT
@@ -57,4 +61,3 @@ jobs:
             Automated data update from Federal Registry scraper
 
             - Updated src/data.json
-            - Updated scripts/executive_orders_proclamations.json
