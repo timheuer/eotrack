@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, Sparkle, CheckCircle } from "@phosphor-icons/react";
+import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, Sparkle, CheckCircle, Sparkle } from "@phosphor-icons/react";
 import { MarkGithubIcon } from '@primer/octicons-react';
 import data from './data.json';
 
