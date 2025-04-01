@@ -29,14 +29,14 @@ jobs:
             for (let i = 0; i < lines.length; i++) {
               const line = lines[i];
               console.log(`Line ${i}: ${line}`);
-              if (line.includes('### Executive Order Number') && i + 1 < lines.length) {
-                data.eoNumber = lines[i + 1].trim();
+              if (line.includes('### Executive Order Number')) {
+                data.eoNumber = lines[i + 2].trim();
               }
-              if (line.includes('### Case Name') && i + 1 < lines.length) {
-                data.caseName = lines[i + 1].trim();
+              if (line.includes('### Case Name')) {
+                data.caseName = lines[i + 2].trim();
               }
-              if (line.includes('### Case URL') && i + 1 < lines.length) {
-                data.caseUrl = lines[i + 1].trim();
+              if (line.includes('### Case URL')) {
+                data.caseUrl = lines[i + 2].trim();
               }
             }
 
