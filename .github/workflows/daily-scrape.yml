@@ -29,11 +29,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 🪠 Run scraper
-        run: |
-          python scripts/scrape.py
-          # Convert any CRLF to LF and ensure single newline at EOF
-          perl -pi -e 's/\r\n/\n/g' src/data.json
-          echo >> src/data.json
+        run: python scripts/scrape.py
 
       - name: 📅 Get current date
         id: date
