@@ -1,10 +1,10 @@
 # EOTrack
 
-A web application that tracks and monitors U.S. Executive Orders and their current status.
+A web application that tracks and monitors U.S. Executive Orders and their current status with regard to legal challenges.
 
 ## Overview
 
-EOTrack provides a real-time dashboard of Executive Orders, showing their current status (enacted, challenged, or overturned) with an easy-to-use interface. The application automatically updates daily by scraping the Federal Registry for new information.
+EOTrack provides a real-time dashboard of Executive Orders, showing their current status with any legal challenges (enacted, challenged, or overturned) with an easy-to-use interface. The application automatically updates daily by scraping the Federal Registry for new information.
 
 ## Features
 
@@ -33,7 +33,7 @@ EOTrack provides a real-time dashboard of Executive Orders, showing their curren
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/eotrack.git
+git clone https://github.com/timheuer/eotrack.git
 cd eotrack
 ```
 
@@ -50,7 +50,7 @@ npm run dev
 
 ### Data Updates
 
-The application automatically updates its data daily through a GitHub Action that runs at 00:00 UTC. The scraper collects information from the Federal Registry and updates the data files in the repository.
+The application automatically updates its data daily through a GitHub Action that runs at 15:00 UTC. The scraper collects information from the Federal Registry and updates the data files in the repository. Presidential orders on whitehouse.gov take a few days before officially registered in the Federal Registry.
 
 ## Contributing
 
