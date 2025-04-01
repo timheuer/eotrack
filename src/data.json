@@ -73,8 +73,21 @@
     "title": "Improving Education Outcomes by Empowering Parents, States, and Communities",
     "date": "2025-03-25",
     "url": "https://www.federalregister.gov/documents/2025/03/25/2025-05213/improving-education-outcomes-by-empowering-parents-states-and-communities",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "State of New York v. McMahon",
+        "url": "https://www.courtlistener.com/docket/69732750/state-of-new-york-v-mcmahon/"
+      },
+      {
+        "title": "Carter v. Department of Education",
+        "url": "https://www.courtlistener.com/docket/69737108/carter-v-united-states-department-of-education/"
+      },
+      {
+        "title": "Somerville Public Schools v. Trump",
+        "url": "https://www.courtlistener.com/docket/69778837/somerville-public-schools-v-trump/"
+      }
+    ]
   },
   {
     "id": "14241",
@@ -134,6 +147,18 @@
       {
         "title": "Abramowitz v. Lake",
         "url": "https://www.courtlistener.com/docket/69791808/abramowitz-v-lake/"
+      },
+      {
+        "title": "RFE/RL, Inc. v. Lake",
+        "url": "https://www.courtlistener.com/docket/69752936/rferl-inc-v-lake/"
+      },
+      {
+        "title": "Open Technology Fund v. Kari Lake",
+        "url": "https://www.courtlistener.com/docket/69765042/open-technology-fund-v-lake/"
+      },
+      {
+        "title": "Widakuswara v. Kari Lake",
+        "url": "https://www.courtlistener.com/docket/69771249/widakuswara-v-kari-lake-in-her-official-capacity-as-senior-advisor-to-the/"
       }
     ]
   },
@@ -158,8 +183,13 @@
     "title": "Invocation of the Alien Enemies Act Regarding the Invasion of the United States by Tren de Aragua",
     "date": "2025-03-20",
     "url": "https://www.federalregister.gov/documents/2025/03/20/2025-04865/invocation-of-the-alien-enemies-act-regarding-the-invasion-of-the-united-states-by-tren-de-aragua",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "J.G.G. v. Trump",
+        "url": "https://www.courtlistener.com/docket/69741724/jgg-v-trump/"
+      }
+    ]
   },
   {
     "id": "10902",
@@ -214,8 +244,13 @@
     "title": "Addressing Risks From Perkins Coie LLP",
     "date": "2025-03-11",
     "url": "https://www.federalregister.gov/documents/2025/03/11/2025-03989/addressing-risks-from-perkins-coie-llp",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "Perkins Coie LLP v. US DOJ",
+        "url": "https://www.courtlistener.com/docket/69725919/perkins-coie-llp-v-us-department-of-justice/"
+      }
+    ]
   },
   {
     "id": "10901",
@@ -351,6 +386,14 @@
       {
         "title": "Center for Biological Diversity v. Office of Management and Budget",
         "url": "https://www.courtlistener.com/docket/69559509/center-for-biological-diversity-v-office-of-management-and-budget/"
+      },
+      {
+        "title": "J. Does 1-26 v. Musk",
+        "url": "https://www.courtlistener.com/docket/69636722/does-1-26-v-musk/"
+      },
+      {
+        "title": "New Mexico et al. v. Musk",
+        "url": "https://www.courtlistener.com/docket/69638651/new-mexico-state-of-v-musk/"
       }
     ]
   },
@@ -367,8 +410,13 @@
     "title": "Commencing the Reduction of the Federal Bureaucracy",
     "date": "2025-02-25",
     "url": "https://www.federalregister.gov/documents/2025/02/25/2025-03133/commencing-the-reduction-of-the-federal-bureaucracy",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "United States Institute of Peace v. Jackson",
+        "url": "https://www.courtlistener.com/docket/69754533/united-states-institute-of-peace-v-jackson/"
+      }
+    ]
   },
   {
     "id": "10897",
@@ -391,8 +439,13 @@
     "title": "Ensuring Accountability for All Agencies",
     "date": "2025-02-24",
     "url": "https://www.federalregister.gov/documents/2025/02/24/2025-03063/ensuring-accountability-for-all-agencies",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "Democratic National Committee v. Trump",
+        "url": "https://www.courtlistener.com/docket/69690767/democratic-national-committee-v-donald-j-trump/"
+      }
+    ]
   },
   {
     "id": "14214",
@@ -447,8 +500,17 @@
     "title": "Implementing the President's \"Department of Government Efficiency\" Workforce Optimization Initiative",
     "date": "2025-02-14",
     "url": "https://www.federalregister.gov/documents/2025/02/14/2025-02762/implementing-the-presidents-department-of-government-efficiency-workforce-optimization-initiative",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "National Treasury Employees Union v. Donald Trump",
+        "url": "https://www.courtlistener.com/docket/69634526/national-treasury-employees-union-v-donald-j-trump/"
+      },
+      {
+        "title": "Maryland et al. v. US Department of Agriculture",
+        "url": "https://www.courtlistener.com/docket/69714275/maryland-v-united-states-department-of-agriculture/"
+      }
+    ]
   },
   {
     "id": "14209",
@@ -527,8 +589,13 @@
     "title": "Keeping Men Out of Women's Sports",
     "date": "2025-02-11",
     "url": "https://www.federalregister.gov/documents/2025/02/11/2025-02513/keeping-men-out-of-womens-sports",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "Tirell v. Edelblut",
+        "url": "https://www.courtlistener.com/docket/69050456/tirrell-v-edelblut/"
+      }
+    ]
   },
   {
     "id": "14200",
@@ -663,16 +730,30 @@
     "title": "Additional Measures To Combat Anti-Semitism",
     "date": "2025-02-03",
     "url": "https://www.federalregister.gov/documents/2025/02/03/2025-02230/additional-measures-to-combat-anti-semitism",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "American Association of University Professors v. US DOJ",
+        "url": "https://www.courtlistener.com/docket/69784589/american-association-of-university-professors-v-united-states-department/"
+      }
+    ]
   },
   {
     "id": "14187",
     "title": "Protecting Children From Chemical and Surgical Mutilation",
     "date": "2025-02-03",
     "url": "https://www.federalregister.gov/documents/2025/02/03/2025-02194/protecting-children-from-chemical-and-surgical-mutilation",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "PFLAG, Inc. v. Trump",
+        "url": "https://www.courtlistener.com/docket/69614668/pflag-inc-v-donald-j-trump/"
+      },
+      {
+        "title": "State of Washington v. Donald J. Trump",
+        "url": "https://www.courtlistener.com/docket/69620657/state-of-washington-v-department-of-justice/"
+      }
+    ]
   },
   {
     "id": "14186",
@@ -703,8 +784,21 @@
     "title": "Prioritizing Military Excellence and Readiness",
     "date": "2025-02-03",
     "url": "https://www.federalregister.gov/documents/2025/02/03/2025-02178/prioritizing-military-excellence-and-readiness",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "Talbott v. Trump",
+        "url": "https://www.courtlistener.com/docket/69583866/talbott-v-trump/"
+      },
+      {
+        "title": "Shilling v. Trump",
+        "url": "https://www.courtlistener.com/docket/69617888/shilling-v-trump/"
+      },
+      {
+        "title": "Ireland v. Hegseth",
+        "url": "https://www.courtlistener.com/docket/69747346/ireland-v-hegseth/"
+      }
+    ]
   },
   {
     "id": "10889",
@@ -719,8 +813,13 @@
     "title": "Enforcing the Hyde Amendment",
     "date": "2025-01-31",
     "url": "https://www.federalregister.gov/documents/2025/01/31/2025-02175/enforcing-the-hyde-amendment",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "State of New York v. Trump",
+        "url": "https://www.courtlistener.com/docket/69585994/state-of-new-york-v-trump/"
+      }
+    ]
   },
   {
     "id": "14181",
@@ -812,6 +911,18 @@
       {
         "title": "National Treasury Employees Union v. Donald J. Trump",
         "url": "https://www.courtlistener.com/docket/69560537/national-treasury-employees-union-v-trump/"
+      },
+      {
+        "title": "American Federaction of Government Employees v. Trump",
+        "url": "https://www.courtlistener.com/docket/69588089/american-federation-of-government-employees-afl-cio-v-trump/"
+      },
+      {
+        "title": "Public Employees for Environmental Responsibility v. Donald Trump",
+        "url": "https://www.courtlistener.com/docket/69586644/public-employees-for-environmental-responsibility-v-trump/"
+      },
+      {
+        "title": "Government Accountability Project v. Office of Personnel Management",
+        "url": "https://www.courtlistener.com/docket/69617919/government-accountability-project-v-united-states-office-of-personnel/"
       }
     ]
   },
@@ -828,8 +939,33 @@
     "title": "Reevaluating and Realigning United States Foreign Aid",
     "date": "2025-01-30",
     "url": "https://www.federalregister.gov/documents/2025/01/30/2025-02091/reevaluating-and-realigning-united-states-foreign-aid",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "National Council of Nonprofits v. Office of Management and Budget",
+        "url": "https://www.courtlistener.com/docket/69583571/national-council-of-nonprofits-v-office-of-management-and-budget/"
+      },
+      {
+        "title": "State of New York v. Trump",
+        "url": "https://www.courtlistener.com/docket/69585994/state-of-new-york-v-trump/"
+      },
+      {
+        "title": "American Foreign Service Association v. Trump",
+        "url": "https://www.courtlistener.com/docket/69619544/american-federation-of-government-employees-v-trump/"
+      },
+      {
+        "title": "AIDS Vaccine Advocacy Coalition v. US Dept of State",
+        "url": "https://www.courtlistener.com/docket/69627654/aids-vaccine-advocacy-coalition-v-department-of-state/"
+      },
+      {
+        "title": "Global Health Council v. Trump",
+        "url": "https://www.courtlistener.com/docket/69628254/global-health-council-v-donald-j-trump/"
+      },
+      {
+        "title": "Personal Services Contractor Association v. Trump",
+        "url": "https://www.courtlistener.com/docket/69650768/personal-services-contractor-association-v-trump/"
+      }
+    ]
   },
   {
     "id": "14168",
@@ -841,6 +977,86 @@
       {
         "title": "Maria Moe v. Donald Trump",
         "url": "https://www.courtlistener.com/docket/69578269/moe-v-trump-president-of-the-united-states/"
+      },
+      {
+        "title": "National Council of Nonprofits v. Office of Management and Budget",
+        "url": "https://www.courtlistener.com/docket/69583571/national-council-of-nonprofits-v-office-of-management-and-budget/"
+      },
+      {
+        "title": "State of New York v. Trump",
+        "url": "https://www.courtlistener.com/docket/69585994/state-of-new-york-v-trump/"
+      },
+      {
+        "title": "Nat'l Association of Diversity Officers in Higher Ed v. Trump",
+        "url": "https://www.courtlistener.com/docket/69607847/national-association-of-diversity-officers-in-higher-education-v-trump/"
+      },
+      {
+        "title": "Doe 1 v. Office of the Director of National Intelligence",
+        "url": "https://www.courtlistener.com/docket/69646552/doe-1-v-office-of-the-director-of-national-intelligence/"
+      },
+      {
+        "title": "National Urban League v. Trump",
+        "url": "https://www.courtlistener.com/docket/69651274/national-urban-league-v-trump/"
+      },
+      {
+        "title": "San Francisco AIDS Foundation v. Trump",
+        "url": "https://www.courtlistener.com/docket/69658554/san-francisco-aids-foundation-v-trump/"
+      },
+      {
+        "title": "Chicago Women in Trades v. Trump",
+        "url": "https://www.courtlistener.com/docket/69675603/chicago-women-in-trades-v-trump/"
+      },
+      {
+        "title": "American Association of Colleges for Teacher Education v. Carter",
+        "url": "https://www.courtlistener.com/docket/69700167/american-association-of-colleges-for-teacher-education-v-carter/"
+      },
+      {
+        "title": "Rhode Island Latino Arts v. National Endowment for the Arts",
+        "url": "https://www.courtlistener.com/docket/69710414/rhode-island-latino-arts-v-national-endowment-for-the-arts/"
+      },
+      {
+        "title": "State of California v. US Dept of Education",
+        "url": "https://www.courtlistener.com/docket/69711499/state-of-california-v-us-department-of-education/"
+      },
+      {
+        "title": "Doe v. Collins",
+        "url": "https://www.courtlistener.com/docket/69740178/parties/doe-v-collins/"
+      },
+      {
+        "title": "PFLAG, Inc. v. Trump",
+        "url": "https://www.courtlistener.com/docket/69614668/pflag-inc-v-donald-j-trump/"
+      },
+      {
+        "title": "State of Washington v. Donald J. Trump",
+        "url": "https://www.courtlistener.com/docket/69620657/state-of-washington-v-department-of-justice/"
+      },
+      {
+        "title": "Tirell v. Edelblut",
+        "url": "https://www.courtlistener.com/docket/69050456/tirrell-v-edelblut/"
+      },
+      {
+        "title": "Doe v. McHenry",
+        "url": "https://www.courtlistener.com/docket/69593824/doe-v-mchenry/"
+      },
+      {
+        "title": "Jones v. Trump",
+        "url": "https://www.courtlistener.com/docket/69628010/jones-v-trump/"
+      },
+      {
+        "title": "Kingdom v. Trump",
+        "url": "https://www.courtlistener.com/docket/69717615/kingdom-v-trump/"
+      },
+      {
+        "title": "Orr v. Trump",
+        "url": "https://www.courtlistener.com/docket/69623342/orr-v-trump-president-of-the-united-states/"
+      },
+      {
+        "title": "Doctors for America v. Office of Personnel Management",
+        "url": "https://www.courtlistener.com/docket/69608613/doctors-for-america-v-office-of-personnel-management/"
+      },
+      {
+        "title": "Schiff v. US Office of Personnel Management",
+        "url": "https://www.courtlistener.com/docket/69729077/schiff-v-us-office-of-personnel-management/"
       }
     ]
   },
@@ -870,6 +1086,14 @@
       {
         "title": "Las Americas Immigrant Advocacy Center v US DHS",
         "url": "https://www.courtlistener.com/docket/68850646/las-americas-immigrant-advocacy-center-v-us-department-of-homeland/"
+      },
+      {
+        "title": "Doe v. Noem",
+        "url": "https://www.courtlistener.com/docket/69695790/doe-v-noem/"
+      },
+      {
+        "title": "Centro de Trabajadores Unidos v. Bessent",
+        "url": "https://www.courtlistener.com/docket/69714586/centro-de-trabajadores-unidos-v-bessent/"
       }
     ]
   },
@@ -886,16 +1110,30 @@
     "title": "Realigning the United States Refugee Admissions Program",
     "date": "2025-01-30",
     "url": "https://www.federalregister.gov/documents/2025/01/30/2025-02011/realigning-the-united-states-refugee-admissions-program",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "Pacito v. Trump",
+        "url": "https://www.courtlistener.com/docket/69626101/pacito-v-trump/"
+      },
+      {
+        "title": "United Staes Conference of Catholic Bishops v. Department of State",
+        "url": "https://www.courtlistener.com/docket/69649820/united-states-conference-of-catholic-bishops-v-united-states-department-of/"
+      }
+    ]
   },
   {
     "id": "14162",
     "title": "Putting America First in International Environmental Agreements",
     "date": "2025-01-30",
     "url": "https://www.federalregister.gov/documents/2025/01/30/2025-02010/putting-america-first-in-international-environmental-agreements",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "State of New York v. Trump",
+        "url": "https://www.courtlistener.com/docket/69585994/state-of-new-york-v-trump/"
+      }
+    ]
   },
   {
     "id": "14161",
@@ -943,6 +1181,14 @@
       {
         "title": "Franco Aleman et al v. Trump",
         "url": "https://www.courtlistener.com/docket/69576744/franco-aleman-v-trump/"
+      },
+      {
+        "title": "OCA - Asian Pacific American Advocates v. Rubio",
+        "url": "https://www.courtlistener.com/docket/69595158/oca-asian-pacific-american-advocates-v-rubio/"
+      },
+      {
+        "title": "County of Santa Clara v. Trump",
+        "url": "https://www.courtlistener.com/docket/69594402/county-of-santa-clara-v-trump/"
       }
     ]
   },
@@ -960,6 +1206,34 @@
       {
         "title": "Organized Communities Against Deportations v. Benamine Huffman",
         "url": "https://www.courtlistener.com/docket/69577670/organized-communities-against-deportations-v-donald-trump/"
+      },
+      {
+        "title": "National Council of Nonprofits v. Office of Management and Budget",
+        "url": "https://www.courtlistener.com/docket/69583571/national-council-of-nonprofits-v-office-of-management-and-budget/"
+      },
+      {
+        "title": "State of New York v. Trump",
+        "url": "https://www.courtlistener.com/docket/69585994/state-of-new-york-v-trump/"
+      },
+      {
+        "title": "Amica Center for Immigrant Rights v. US DOJ",
+        "url": "https://www.courtlistener.com/docket/69599829/amica-center-for-immigrant-rights-v-united-states-department-of-justice/"
+      },
+      {
+        "title": "Solutions In Hometown Connections v. Noem",
+        "url": "https://www.courtlistener.com/docket/69748413/solutions-in-hometown-connections-v-noem/"
+      },
+      {
+        "title": "City and County of San Francisco v. Donald J. Trump",
+        "url": "https://www.courtlistener.com/docket/69623767/city-and-county-of-san-francisco-v-donald-j-trump/"
+      },
+      {
+        "title": "City of Chelsea v. Trump",
+        "url": "https://www.courtlistener.com/docket/69665101/city-of-chelsea-v-trump/"
+      },
+      {
+        "title": "Centro de Trabajadores Unidos v. Bessent",
+        "url": "https://www.courtlistener.com/docket/69714586/centro-de-trabajadores-unidos-v-bessent/"
       }
     ]
   },
@@ -985,6 +1259,30 @@
       {
         "title": "Center for Biological Diversity v. Office of Management and Budget",
         "url": "https://www.courtlistener.com/docket/69559509/center-for-biological-diversity-v-office-of-management-and-budget/"
+      },
+      {
+        "title": "Masachusetts Fair Housing Center v. Department of Housing and Urban Development",
+        "url": "https://www.courtlistener.com/docket/69733424/massachusetts-fair-housing-center-v-department-of-housing-and-urban/"
+      },
+      {
+        "title": "City of New York v. Trump",
+        "url": "https://www.courtlistener.com/docket/69663207/v-trump/"
+      },
+      {
+        "title": "Climate United Fund v. Citibank",
+        "url": "https://www.courtlistener.com/docket/69718818/climate-united-fund-v-citibank-na/"
+      },
+      {
+        "title": "J. Does 1-26 v. Musk",
+        "url": "https://www.courtlistener.com/docket/69636722/does-1-26-v-musk/"
+      },
+      {
+        "title": "New Mexico et al. v. Musk",
+        "url": "https://www.courtlistener.com/docket/69638651/new-mexico-state-of-v-musk/"
+      },
+      {
+        "title": "Centro de Trabajadores Unidos v. Bessent",
+        "url": "https://www.courtlistener.com/docket/69714586/centro-de-trabajadores-unidos-v-bessent/"
       }
     ]
   },
@@ -1017,8 +1315,33 @@
     "title": "Unleashing American Energy",
     "date": "2025-01-29",
     "url": "https://www.federalregister.gov/documents/2025/01/29/2025-01956/unleashing-american-energy",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "National Council of Nonprofits v. Office of Management and Budget",
+        "url": "https://www.courtlistener.com/docket/69583571/national-council-of-nonprofits-v-office-of-management-and-budget/"
+      },
+      {
+        "title": "State of New York v. Trump",
+        "url": "https://www.courtlistener.com/docket/69585994/state-of-new-york-v-trump/"
+      },
+      {
+        "title": "Woonasquatucket River Watershed Council v. Deparment of Agriculture",
+        "url": "https://www.courtlistener.com/docket/69736976/woonasquatucket-river-watershed-council-v-department-of-agriculture/"
+      },
+      {
+        "title": "Sustainability Institute v. Trump",
+        "url": "https://www.courtlistener.com/docket/69762768/the-sustainability-institute-v-trump/"
+      },
+      {
+        "title": "California Infrastructure and Economic Development v. Citibank and EPA",
+        "url": "https://www.courtlistener.com/docket/69758448/california-infrastructure-and-economic-development-bank-v-citibank-na/"
+      },
+      {
+        "title": "Butterbee Farm v. United States Department of Agriculture",
+        "url": "https://www.courtlistener.com/docket/69733481/butterbee-farm/"
+      }
+    ]
   },
   {
     "id": "14153",
@@ -1041,8 +1364,53 @@
     "title": "Ending Radical and Wasteful Government DEI Programs and Preferencing",
     "date": "2025-01-29",
     "url": "https://www.federalregister.gov/documents/2025/01/29/2025-01953/ending-radical-and-wasteful-government-dei-programs-and-preferencing",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "National Council of Nonprofits v. Office of Management and Budget",
+        "url": "https://www.courtlistener.com/docket/69583571/national-council-of-nonprofits-v-office-of-management-and-budget/"
+      },
+      {
+        "title": "State of New York v. Trump",
+        "url": "https://www.courtlistener.com/docket/69585994/state-of-new-york-v-trump/"
+      },
+      {
+        "title": "Nat'l Association of Diversity Officers in Higher Ed v. Trump",
+        "url": "https://www.courtlistener.com/docket/69607847/national-association-of-diversity-officers-in-higher-education-v-trump/"
+      },
+      {
+        "title": "Doe 1 v. Office of the Director of National Intelligence",
+        "url": "https://www.courtlistener.com/docket/69646552/doe-1-v-office-of-the-director-of-national-intelligence/"
+      },
+      {
+        "title": "National Urban League v. Trump",
+        "url": "https://www.courtlistener.com/docket/69651274/national-urban-league-v-trump/"
+      },
+      {
+        "title": "San Francisco AIDS Foundation v. Trump",
+        "url": "https://www.courtlistener.com/docket/69658554/san-francisco-aids-foundation-v-trump/"
+      },
+      {
+        "title": "Chicago Women in Trades v. Trump",
+        "url": "https://www.courtlistener.com/docket/69675603/chicago-women-in-trades-v-trump/"
+      },
+      {
+        "title": "American Association of Colleges for Teacher Education v. Carter",
+        "url": "https://www.courtlistener.com/docket/69700167/american-association-of-colleges-for-teacher-education-v-carter/"
+      },
+      {
+        "title": "Rhode Island Latino Arts v. National Endowment for the Arts",
+        "url": "https://www.courtlistener.com/docket/69710414/rhode-island-latino-arts-v-national-endowment-for-the-arts/"
+      },
+      {
+        "title": "State of California v. US Dept of Education",
+        "url": "https://www.courtlistener.com/docket/69711499/state-of-california-v-us-department-of-education/"
+      },
+      {
+        "title": "Doe v. Collins",
+        "url": "https://www.courtlistener.com/docket/69740178/parties/doe-v-collins/"
+      }
+    ]
   },
   {
     "id": "14150",
@@ -1057,8 +1425,13 @@
     "title": "Guaranteeing the States Protection Against Invasion",
     "date": "2025-01-29",
     "url": "https://www.federalregister.gov/documents/2025/01/29/2025-01951/guaranteeing-the-states-protection-against-invasion",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "Refugee and Immigrant Center for Education and Legal Services v. Noem",
+        "url": "https://www.courtlistener.com/docket/69606027/refugee-and-immigrant-center-for-education-and-legal-services-v-noem/"
+      }
+    ]
   },
   {
     "id": "10887",
@@ -1089,16 +1462,30 @@
     "title": "Initial Rescissions of Harmful Executive Orders and Actions",
     "date": "2025-01-28",
     "url": "https://www.federalregister.gov/documents/2025/01/28/2025-01901/initial-rescissions-of-harmful-executive-orders-and-actions",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "Northern Alaska Environmental Center v. Trump",
+        "url": "https://www.courtlistener.com/docket/69652665/northern-alaska-environmental-center-v-trump/#entry-1"
+      }
+    ]
   },
   {
     "id": "14147",
     "title": "Ending the Weaponization of the Federal Government",
     "date": "2025-01-28",
     "url": "https://www.federalregister.gov/documents/2025/01/28/2025-01900/ending-the-weaponization-of-the-federal-government",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "John and Jane Does 1-9 v. US DOJ",
+        "url": "https://www.courtlistener.com/docket/69609079/does-1-9-v-department-of-justice/"
+      },
+      {
+        "title": "Federal Bureau of Investigation Agents Association v. US DOJ",
+        "url": "https://www.courtlistener.com/docket/69609596/federal-bureau-of-investigation-agents-association-v-department-of-justice/"
+      }
+    ]
   },
   {
     "id": "10885",
