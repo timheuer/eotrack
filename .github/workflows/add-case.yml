@@ -25,15 +25,16 @@ jobs:
             const lines = body.split('\n');
             const data = {};
 
-            for (const line of lines) {
-              if (line.includes('### Executive Order Number')) {
-                data.eoNumber = line.split('\n')[1].trim();
+            for (let i = 0; i < lines.length; i++) {
+              const line = lines[i];
+              if (line.includes('### Executive Order Number') && i + 1 < lines.length) {
+                data.eoNumber = lines[i + 1].trim();
               }
-              if (line.includes('### Case Name')) {
-                data.caseName = line.split('\n')[1].trim();
+              if (line.includes('### Case Name') && i + 1 < lines.length) {
+                data.caseName = lines[i + 1].trim();
               }
-              if (line.includes('### Case URL')) {
-                data.caseUrl = line.split('\n')[1].trim();
+              if (line.includes('### Case URL') && i + 1 < lines.length) {
+                data.caseUrl = lines[i + 1].trim();
               }
             }
 
@@ -45,6 +46,9 @@ jobs:
             core.setOutput('eo-number', data.eoNumber);
             core.setOutput('case-name', data.caseName);
             core.setOutput('case-url', data.caseUrl);
+
+            // For debugging
+            console.log('Extracted data:', data);
 
       - name: Update data.json
         id: update-data
