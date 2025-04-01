@@ -86,18 +86,14 @@ def main():
     
     # Merge documents
     merged_documents = merge_documents(formatted_documents, existing_documents)
-    
-    # Save to both files
-    # Save to original location for backwards compatibility
-    with open('scripts/executive_orders_proclamations.json', 'w', newline='') as f:
-        json.dump(merged_documents, f, indent=2)
         
     # Save to src/data.json for the application
     os.makedirs('../src', exist_ok=True)
     with open('src/data.json', 'w', newline='') as f:
-        json.dump(merged_documents, f, indent=2)
+        json.dump(merged_documents, f, indent=2, ensure_ascii=False)
+        f.write('\n')  # Add newline at end of file
 
-    print(f"Saved {len(merged_documents)} documents to both JSON files.")
+    print(f"Saved {len(merged_documents)} documents to src/data.json.")
 
 if __name__ == "__main__":
     main()
