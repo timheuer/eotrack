@@ -23,38 +23,6 @@ body:
     validations:
       required: true
   - type: input
-    id: case-number
-    attributes:
-      label: Case Number/Citation
-      description: The official case number or citation
-      placeholder: e.g., No. 17-35105 (9th Cir. 2017)
-    validations:
-      required: false
-  - type: input
-    id: court
-    attributes:
-      label: Court
-      description: The court where the case was filed/heard
-      placeholder: e.g., U.S. Court of Appeals for the Ninth Circuit
-    validations:
-      required: false
-  - type: input
-    id: filing-date
-    attributes:
-      label: Filing/Decision Date
-      description: The date the case was filed or decided
-      placeholder: YYYY-MM-DD
-    validations:
-      required: false
-  - type: textarea
-    id: case-summary
-    attributes:
-      label: Case Summary
-      description: Brief summary of the case and its relevance to the Executive Order
-      placeholder: Explain what the case is about and how it relates to or impacts the Executive Order...
-    validations:
-      required: false
-  - type: input
     id: case-url
     attributes:
       label: Case URL
@@ -62,18 +30,12 @@ body:
       placeholder: https://www.courts.gov/...
     validations:
       required: true
-  - type: dropdown
-    id: status
+  - type: input
+    id: filing-date
     attributes:
-      label: Case Status
-      description: Current status of the case
-      options:
-        - Pending
-        - Decided
-        - Appealed
-        - Settled
-        - Dismissed
-        - Other
+      label: Filing/Decision Date
+      description: The date the case was filed or decided
+      placeholder: YYYY-MM-DD
     validations:
       required: false
   - type: textarea
