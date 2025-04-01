@@ -1,6 +1,6 @@
 name: ⚖️ Add Case to Existing EO
 description: Report a court case or other relevant case that should be added to an existing Executive Order
-labels: [enhancement, case-addition]
+labels: [case-addition]
 body:
   - type: markdown
     attributes:
@@ -29,7 +29,7 @@ body:
       description: The official case number or citation
       placeholder: e.g., No. 17-35105 (9th Cir. 2017)
     validations:
-      required: true
+      required: false
   - type: input
     id: court
     attributes:
@@ -37,7 +37,7 @@ body:
       description: The court where the case was filed/heard
       placeholder: e.g., U.S. Court of Appeals for the Ninth Circuit
     validations:
-      required: true
+      required: false
   - type: input
     id: filing-date
     attributes:
@@ -45,7 +45,7 @@ body:
       description: The date the case was filed or decided
       placeholder: YYYY-MM-DD
     validations:
-      required: true
+      required: false
   - type: textarea
     id: case-summary
     attributes:
@@ -53,7 +53,7 @@ body:
       description: Brief summary of the case and its relevance to the Executive Order
       placeholder: Explain what the case is about and how it relates to or impacts the Executive Order...
     validations:
-      required: true
+      required: false
   - type: input
     id: case-url
     attributes:
@@ -75,7 +75,7 @@ body:
         - Dismissed
         - Other
     validations:
-      required: true
+      required: false
   - type: textarea
     id: additional-info
     attributes:
