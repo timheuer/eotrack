@@ -126,7 +126,7 @@ function StatusIcon({ status }) {
 }
 
 // Legend component
-function StatusLegend({ statusFilter, onStatusFilterChange }) {
+function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated }) {
   // Calculate counts
   const counts = React.useMemo(() => {
     const statusCounts = {
@@ -168,10 +168,14 @@ function StatusLegend({ statusFilter, onStatusFilterChange }) {
           <span className="text-gray-700 dark:text-gray-300">{label} ({counts[status]})</span>
         </button>
       ))}
-      <div className="flex items-center gap-2" role="note">
+      <button 
+        onClick={onSortByUpdated}
+        className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-150"
+        aria-label="Sort by recently updated cases"
+      >
         <Clock className="w-5 h-5 text-blue-500 dark:text-blue-400" weight="fill" aria-hidden="true" />
         <span className="text-gray-700 dark:text-gray-300">Updated in last 48 hours</span>
-      </div>
+      </button>
     </div>
   );
 }
@@ -222,13 +226,20 @@ function App() {
     key: 'date',
     direction: 'desc'
   });
+  const [sortByUpdated, setSortByUpdated] = React.useState(false);
 
   // Sorting function
   const handleSort = (key) => {
+    setSortByUpdated(false);
     setSortConfig({
       key,
       direction: sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc'
     });
+  };
+
+  const handleSortByUpdated = () => {
+    setSortByUpdated(true);
+    setSortConfig({ key: 'lastUpdated', direction: 'desc' });
   };
 
   // Filter and sort the data
@@ -245,6 +256,15 @@ function App() {
         return matchesSearch && matchesStatus;
       })
       .sort((a, b) => {
+        if (sortByUpdated) {
+          // Get the most recent update date from challenges
+          const getLatestUpdate = (eo) => {
+            if (eo.challenges.length === 0) return new Date(0);
+            return new Date(Math.max(...eo.challenges.map(c => new Date(c.lastUpdated))));
+          };
+          return getLatestUpdate(b) - getLatestUpdate(a);
+        }
+
         if (sortConfig.key === 'date') {
           return sortConfig.direction === 'asc' 
             ? new Date(a.date) - new Date(b.date)
@@ -260,7 +280,7 @@ function App() {
           return aValue < bValue ? 1 : -1;
         }
       });
-  }, [executiveOrders, searchQuery, statusFilter, sortConfig]);
+  }, [executiveOrders, searchQuery, statusFilter, sortConfig, sortByUpdated]);
 
   // Format date according to system preferences
   const formatDate = (dateString) => {
@@ -297,6 +317,7 @@ function App() {
             <StatusLegend 
               statusFilter={statusFilter}  
               onStatusFilterChange={setStatusFilter}
+              onSortByUpdated={handleSortByUpdated}
             />
             
             {/* Search and filters */}
@@ -339,7 +360,7 @@ function App() {
                       <th className="p-4 text-left font-semibold text-gray-700 dark:text-gray-300 align-top" role="columnheader" aria-label="Status">Status</th>
                       <SortableHeader label="EO#" sortKey="id" />
                       <SortableHeader label="Title" sortKey="title" />
-                      <SortableHeader label="Date" sortKey="date" />
+                      <SortableHeader label="EO Date" sortKey="date" />
                       <th className="p-4 text-left font-semibold text-gray-700 dark:text-gray-300 align-top" role="columnheader">Cases</th>
                     </tr>
                   </thead>
