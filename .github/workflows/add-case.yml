@@ -62,6 +62,15 @@ jobs:
             const caseName = '${{ steps.get-issue-data.outputs.case-name }}';
             const caseUrl = '${{ steps.get-issue-data.outputs.case-url }}';
 
+            // Extract docket ID from CourtListener URL if present
+            let docketId = null;
+            if (caseUrl.includes('courtlistener.com/docket/')) {
+              const match = caseUrl.match(/\/docket\/(\d+)/);
+              if (match) {
+                docketId = match[1];
+              }
+            }
+
             const data = JSON.parse(fs.readFileSync('src/data.json', 'utf8'));
 
             const eo = data.find(item => item.id === eoNumber);
@@ -74,10 +83,15 @@ jobs:
               eo.challenges = [];
             }
 
-            eo.challenges.push({
+            // Add challenge with docketId if it exists
+            const challenge = {
               title: caseName,
               url: caseUrl
-            });
+            };
+            if (docketId) {
+              challenge.docketId = docketId;
+            }
+            eo.challenges.push(challenge);
 
             if (eo.status === 'enacted') {
               eo.status = 'challenged';
