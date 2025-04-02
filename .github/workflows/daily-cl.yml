@@ -9,6 +9,8 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      CL_API_KEY: ${{ secrets.CL_API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
