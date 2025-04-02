@@ -1,8 +1,16 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle } from "@phosphor-icons/react";
+import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle, Clock } from "@phosphor-icons/react";
 import { MarkGithubIcon } from '@primer/octicons-react';
 import data from './data.json';
+
+// Helper function to check if a date is within the last 48 hours
+const isRecentlyUpdated = (dateString) => {
+  const now = new Date();
+  const updated = new Date(dateString);
+  const diffHours = (now - updated) / (1000 * 60 * 60);
+  return diffHours <= 48;
+};
 
 // Theme context
 const ThemeContext = React.createContext({
@@ -137,8 +145,7 @@ function StatusLegend({ statusFilter, onStatusFilterChange }) {
 
   return (
     <div className="flex gap-8 mb-8" role="region" aria-label="Status legend">
-      {[
-        { status: 'enacted', label: 'Enacted', icon: Circle },
+      {[{ status: 'enacted', label: 'Enacted', icon: Circle },
         { status: 'challenged', label: 'Challenged', icon: Warning },
         { status: 'resolved', label: 'Resolved', icon: CheckCircle },
         { status: 'overturned', label: 'Overturned', icon: Octagon }
@@ -161,6 +168,10 @@ function StatusLegend({ statusFilter, onStatusFilterChange }) {
           <span className="text-gray-700 dark:text-gray-300">{label} ({counts[status]})</span>
         </button>
       ))}
+      <div className="flex items-center gap-2" role="note">
+        <Clock className="w-5 h-5 text-blue-500 dark:text-blue-400" weight="fill" aria-hidden="true" />
+        <span className="text-gray-700 dark:text-gray-300">Updated in last 48 hours</span>
+      </div>
     </div>
   );
 }
@@ -361,15 +372,25 @@ function App() {
                               {eo.challenges.map((challenge, index) => (
                                 <li key={index} className="flex">
                                   <span className="mr-2">•</span>
-                                  <a 
-                                    href={challenge.url}
-                                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={`View legal challenge: ${challenge.title}`}
-                                  >
-                                    {challenge.title}
-                                  </a>
+                                  <div className="flex items-center gap-2">
+                                    <a 
+                                      href={challenge.url}
+                                      className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      aria-label={`View legal challenge: ${challenge.title}`}
+                                    >
+                                      {challenge.title}
+                                    </a>
+                                    {isRecentlyUpdated(challenge.lastUpdated) && (
+                                      <Clock 
+                                        className="w-4 h-4 text-blue-500 dark:text-blue-400" 
+                                        weight="fill"
+                                        aria-label="Updated in the last 48 hours"
+                                        title="Updated in the last 48 hours"
+                                      />
+                                    )}
+                                  </div>
                                 </li>
                               ))}
                             </ul>
