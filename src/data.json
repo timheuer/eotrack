@@ -12,8 +12,14 @@
     "title": "Preserving and Protecting the Integrity of American Elections",
     "date": "2025-03-28",
     "url": "https://www.federalregister.gov/documents/2025/03/28/2025-05523/preserving-and-protecting-the-integrity-of-american-elections",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "League of Women Voters Education Fund v. Trump",
+        "url": "https://www.courtlistener.com/docket/69828370/league-of-women-voters-education-fund-v-trump/",
+        "docketId": "69828370"
+      }
+    ]
   },
   {
     "id": "14247",
