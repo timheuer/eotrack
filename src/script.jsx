@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle, Clock } from "@phosphor-icons/react";
-import { MarkGithubIcon } from '@primer/octicons-react';
+import { MarkGithubIcon, CopilotIcon } from '@primer/octicons-react';
 import data from './data.json';
 
 // Helper function to check if a date is within the last 48 hours
@@ -184,31 +184,17 @@ function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-auto py-8">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com/timheuer/eotrack"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors duration-150"
-              aria-label="View source on GitHub"
-            >
-              <MarkGithubIcon size={20} />
-            </a>
-            <a
-              href="https://github.com/timheuer/eotrack/issues/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors duration-150"
-              aria-label="Report incorrect information"
-            >
-              Issue? Missing EO? Missing Case? Report an Issue
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
+        <div className="flex justify-between items-center">
+          <div>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               This site does not collect any user information
             </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
+              <CopilotIcon size={16} />
+              Built by GitHub Copilot
+            </div>
             <ThemeToggle />
           </div>
         </div>
@@ -310,7 +296,29 @@ function App() {
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
         <div className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
           <div className="max-w-screen-xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Executive Orders Tracker</h1>
+            <div className="flex justify-between items-center mb-6">
+              <h1 className="text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Executive Orders Tracker</h1>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://github.com/timheuer/eotrack"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors duration-150"
+                  aria-label="View source on GitHub"
+                >
+                  <MarkGithubIcon size={20} />
+                </a>
+                <a
+                  href="https://github.com/timheuer/eotrack/issues/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors duration-150 text-sm"
+                  aria-label="Report incorrect information"
+                >
+                  Issue? Missing EO? Missing Case? Report an Issue
+                </a>
+              </div>
+            </div>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
               Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders and Proclamations of Donald J. Trump</a> in current term and legal challenges to them in the simplest way. Links to the official presidential records are from the <a href="https://www.federalregister.gov/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Federal Registry</a>, which takes a few days from date of proclamations to register.
             </p>
