@@ -3,7 +3,7 @@ using System.Text.Json;
 
 // Constants
 var client = new HttpClient();
-const string DATA_FILE_PATH = "../src/data.json";
+const string DATA_FILE_PATH = "./src/data.json";
 const string API_BASE_URL = "https://www.courtlistener.com/api/rest/v3/dockets/";
 
 // Get API key from environment
