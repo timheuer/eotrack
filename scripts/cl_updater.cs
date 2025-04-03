@@ -117,5 +117,7 @@ public record ExecutiveOrder
     public required string id { get; init; }
     public required string title { get; init; }
     public required string status { get; init; }
+    public required string date { get; init; }
+    public required string url { get; init; }
     public List<Challenge>? challenges { get; init; }
 }
