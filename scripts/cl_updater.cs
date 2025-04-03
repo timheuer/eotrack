@@ -46,7 +46,7 @@ try
                     var docketInfo = JsonDocument.Parse(content);
 
                     // Get the date_modified field
-                    if (docketInfo.RootElement.TryGetProperty("date_modified", out JsonElement dateModified))
+                    if (docketInfo.RootElement.TryGetProperty("date_last_filing", out JsonElement dateModified))
                     {
                         string rawDate = dateModified.GetString();
                         if (DateTime.TryParse(rawDate, out DateTime parsedDate))
