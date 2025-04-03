@@ -1,0 +1,50 @@
+name: .NET Court Listener Update
+
+on:
+  workflow_dispatch: # Only allow manual triggers
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      CL_API_KEY: ${{ secrets.CL_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+          dotnet-quality: "daily"
+
+      - name: Run update script
+        run: dotnet run scripts/cl_updater.cs
+
+      - name: 🤔 Check for changes
+        id: changes
+        run: |
+          if [[ -n "$(git status --porcelain src/data.json)" ]]; then
+            echo "changed=1" >> $GITHUB_OUTPUT
+            echo "Changes detected in src/data.json"
+          else
+            echo "changed=0" >> $GITHUB_OUTPUT
+            echo "No changes detected in src/data.json"
+          fi
+
+      - name: Create Pull Request if changes
+        if: steps.changes.outputs.changed == '1'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: update Court Listener data"
+          title: "Update Court Listener Data (.NET)"
+          body: |
+            Automated update from Court Listener data source using .NET implementation.
+
+            This PR was automatically created by the manual workflow run.
+          branch: automated-cl-update-dotnet
+          delete-branch: true
