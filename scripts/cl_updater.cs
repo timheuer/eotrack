@@ -48,12 +48,16 @@ try
                     // Get the date_modified field
                     if (docketInfo.RootElement.TryGetProperty("date_modified", out JsonElement dateModified))
                     {
-                        string newDate = dateModified.GetString();
-                        if (newDate != challenge.lastUpdated)
+                        string rawDate = dateModified.GetString();
+                        if (DateTime.TryParse(rawDate, out DateTime parsedDate))
                         {
-                            Console.WriteLine($"Updating docket {challenge.docketId} with {newDate}");
-                            challenge.lastUpdated = newDate;
-                            hasUpdates = true;
+                            string newDate = parsedDate.ToString("yyyy-MM-dd");
+                            if (newDate != challenge.lastUpdated)
+                            {
+                                Console.WriteLine($"Updating docket {challenge.docketId} with {newDate}");
+                                challenge.lastUpdated = newDate;
+                                hasUpdates = true;
+                            }
                         }
                     }
                 }
