@@ -28,8 +28,14 @@
     "title": "Addressing Risks From WilmerHale",
     "date": "2025-04-03",
     "url": "https://www.federalregister.gov/documents/2025/04/03/2025-05845/addressing-risks-from-wilmerhale",
-    "status": "enacted",
-    "challenges": []
+    "status": "challenged",
+    "challenges": [
+      {
+        "title": "Wilmer Cutler Pickering Hale and Dorr LLP v. Executive Office of the President",
+        "url": "https://www.courtlistener.com/docket/69807328/wilmer-cutler-pickering-hale-and-dorr-llp-v-executive-office-of-the/",
+        "docketId": "69807328"
+      }
+    ]
   },
   {
     "id": "14253",
