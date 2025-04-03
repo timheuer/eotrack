@@ -51,7 +51,7 @@ try
                         string rawDate = dateModified.GetString();
                         if (DateTime.TryParse(rawDate, out DateTime parsedDate))
                         {
-                            string newDate = parsedDate.ToString("yyyy-MM-dd");
+                            string newDate = parsedDate.ToString("yyyy-MM-dd") + "T00:00:00Z";
                             if (newDate != challenge.lastUpdated)
                             {
                                 Console.WriteLine($"Updating docket {challenge.docketId} with {newDate}");
