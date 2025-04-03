@@ -127,3 +127,15 @@ jobs:
               state: 'closed',
               state_reason: 'completed'
             });
+
+      - name: Trigger daily-cl workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'daily-cl.yml',
+              ref: 'main'
+            });
