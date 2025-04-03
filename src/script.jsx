@@ -294,7 +294,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
-        <div className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+        <div className="static sm:sticky top-0 z-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
           <div className="max-w-screen-xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center mb-6">
               <h1 className="text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Executive Orders Tracker</h1>
@@ -319,14 +319,16 @@ function App() {
                 </a>
               </div>
             </div>
-            <p className="text-gray-700 dark:text-gray-300 mb-6">
+            <p className="text-gray-700 dark:text-gray-300 mb-6 hidden sm:block">
               Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders and Proclamations of Donald J. Trump</a> in current term and legal challenges to them in the simplest way. Links to the official presidential records are from the <a href="https://www.federalregister.gov/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Federal Registry</a>, which takes a few days from date of proclamations to register.
             </p>
-            <StatusLegend 
-              statusFilter={statusFilter}  
-              onStatusFilterChange={setStatusFilter}
-              onSortByUpdated={handleSortByUpdated}
-            />
+            <div className="hidden sm:block">
+              <StatusLegend 
+                statusFilter={statusFilter}  
+                onStatusFilterChange={setStatusFilter}
+                onSortByUpdated={handleSortByUpdated}
+              />
+            </div>
             
             {/* Search and filters */}
             <div className="mb-6 flex flex-col sm:flex-row gap-4" role="search">
@@ -337,14 +339,14 @@ function App() {
                   placeholder="Search by EO#, title, or case..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-150"
+                  className="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-150 text-sm sm:text-base"
                   aria-label="Search executive orders"
                 />
               </div>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full sm:w-[200px] px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-150"
+                className="w-full sm:w-[200px] px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-150 text-sm sm:text-base"
                 aria-label="Filter by status"
               >
                 <option value="all">All Statuses</option>
@@ -358,12 +360,12 @@ function App() {
         </div>
 
         <div className="flex-1">
-          <div className="max-w-screen-xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+          <div className="max-w-screen-xl mx-auto px-2 sm:px-4 py-4 sm:py-6 sm:px-6 lg:px-8">
             {/* Table of Executive Orders */}
             <div className="overflow-hidden rounded-xl shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
               <div className="overflow-auto max-h-[calc(100vh-300px)]">
                 <table className="w-full border-collapse bg-white dark:bg-gray-800" role="grid" aria-label="Executive Orders">
-                  <thead className="sticky top-0 bg-gray-50 dark:bg-gray-900 z-10">
+                  <thead className="static sm:sticky top-0 bg-gray-50 dark:bg-gray-900 z-10">
                     <tr className="border-b border-gray-200 dark:border-gray-700" role="row">
                       <th className="p-4 text-left font-semibold text-gray-700 dark:text-gray-300 align-top" role="columnheader" aria-label="Status">Status</th>
                       <SortableHeader label="EO#" sortKey="id" />
@@ -375,15 +377,16 @@ function App() {
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     {filteredAndSortedOrders.map((eo) => (
                       <tr key={eo.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150" role="row">
-                        <td className="p-4 align-top">
+                        <td className="p-2 sm:p-4 align-top flex items-center sm:table-cell">
                           <div className="flex items-start">
                             <StatusIcon status={eo.status} />
                           </div>
                         </td>
-                        <td className="p-4 align-top">
+                        <td className="p-2 sm:p-4 align-top flex items-center sm:table-cell">
+                          <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">EO#:</span>
                           <a 
                             href={eo.url}
-                            className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline transition-colors duration-150"
+                            className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline transition-colors duration-150 text-sm sm:text-base"
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View Executive Order ${eo.id}`}
@@ -391,20 +394,25 @@ function App() {
                             {eo.id}
                           </a>
                         </td>
-                        <td className="p-4 align-top text-gray-900 dark:text-white">{eo.title}</td>
-                        <td className="p-4 align-top whitespace-nowrap text-gray-700 dark:text-gray-300">
+                        <td className="p-2 sm:p-4 align-top text-gray-900 dark:text-white text-sm sm:text-base">
+                          <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Title:</span>
+                          {eo.title}
+                        </td>
+                        <td className="p-2 sm:p-4 align-top whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                          <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Date:</span>
                           {formatDate(eo.date)}
                         </td>
-                        <td className="p-4 align-top">
+                        <td className="p-2 sm:p-4 align-top text-sm sm:text-base">
+                          <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Cases:</span>
                           {eo.challenges.length > 0 ? (
                             <ul className="list-disc list-inside space-y-2 align-top" aria-label={`Legal challenges for Executive Order ${eo.id}`}>
                               {eo.challenges.map((challenge, index) => (
-                                <li key={index} className="flex">
+                                <li key={index} className="flex flex-wrap">
                                   <span className="mr-2">•</span>
-                                  <div className="flex items-center gap-2">
+                                  <div className="flex items-center gap-2 flex-1">
                                     <a 
                                       href={challenge.url}
-                                      className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150"
+                                      className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150 break-words"
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       aria-label={`View legal challenge: ${challenge.title}`}
@@ -413,7 +421,7 @@ function App() {
                                     </a>
                                     {isRecentlyUpdated(challenge.lastUpdated) && (
                                       <Clock 
-                                        className="w-4 h-4 text-blue-500 dark:text-blue-400" 
+                                        className="w-4 h-4 text-blue-500 dark:text-blue-400 flex-shrink-0" 
                                         weight="fill"
                                         aria-label="Updated in the last 48 hours"
                                         title="Updated in the last 48 hours"

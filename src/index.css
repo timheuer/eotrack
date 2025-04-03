@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base styles */
+html {
+  @apply antialiased;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 640px) {
+  table {
+    @apply border-0;
+  }
+  
+  thead {
+    @apply hidden;
+  }
+  
+  tr {
+    @apply mb-4 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden;
+  }
+  
+  td {
+    @apply block w-full border-0;
+  }
+
+  /* Improve tap targets on mobile */
+  button, 
+  a, 
+  select,
+  input {
+    @apply min-h-[44px] leading-normal;
+  }
+
+  /* Improve readability on mobile */
+  .break-words {
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+/* Ensure proper dark mode transitions */
+.dark body {
+  @apply bg-gray-900;
+}
