@@ -51,7 +51,7 @@ try
                         string newDate = dateModified.GetString();
                         if (newDate != challenge.lastUpdated)
                         {
-                            Console.WriteLine($"Updating lastUpdated for docket {challenge.docketId} from {challenge.lastUpdated} to {newDate}");
+                            Console.WriteLine($"Updating docket {challenge.docketId} with {newDate}");
                             challenge.lastUpdated = newDate;
                             hasUpdates = true;
                         }
