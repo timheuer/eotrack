@@ -1,0 +1,15 @@
+/home/runner/work/eotrack/eotrack/scripts/bin/Debug/net10.0/cl_updater
+/home/runner/work/eotrack/eotrack/scripts/bin/Debug/net10.0/cl_updater.deps.json
+/home/runner/work/eotrack/eotrack/scripts/bin/Debug/net10.0/cl_updater.runtimeconfig.json
+/home/runner/work/eotrack/eotrack/scripts/bin/Debug/net10.0/cl_updater.dll
+/home/runner/work/eotrack/eotrack/scripts/bin/Debug/net10.0/cl_updater.pdb
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/cl_updater.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/cl_updater.AssemblyInfoInputs.cache
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/cl_updater.AssemblyInfo.cs
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/cl_updater.csproj.CoreCompileInputs.cache
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/cl_updater.sourcelink.json
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/cl_updater.dll
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/refint/cl_updater.dll
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/cl_updater.pdb
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/cl_updater.genruntimeconfig.cache
+/home/runner/work/eotrack/eotrack/scripts/obj/Debug/net10.0/ref/cl_updater.dll
