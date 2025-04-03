@@ -1,25 +1,10 @@
 using System.Net.Http.Headers;
+using System.Text.Json;
 
 // Constants
 var client = new HttpClient();
 const string DATA_FILE_PATH = "../src/data.json";
 const string API_BASE_URL = "https://www.courtlistener.com/api/rest/v3/dockets/";
-
-public record Challenge
-{
-    public string title { get; init; }
-    public string url { get; init; }
-    public string docketId { get; init; }
-    public string lastUpdated { get; set; }
-}
-
-public record ExecutiveOrder
-{
-    public string id { get; init; }
-    public string title { get; init; }
-    public string status { get; init; }
-    public List<Challenge> challenges { get; init; }
-}
 
 // Get API key from environment
 string apiKey = Environment.GetEnvironmentVariable("CL_API_KEY");
@@ -116,4 +101,20 @@ try
 catch (Exception ex)
 {
     Console.WriteLine($"Error: {ex.Message}");
+}
+
+public record Challenge
+{
+    public required string title { get; init; }
+    public required string url { get; init; }
+    public string? docketId { get; init; }
+    public string? lastUpdated { get; set; }
+}
+
+public record ExecutiveOrder
+{
+    public required string id { get; init; }
+    public required string title { get; init; }
+    public required string status { get; init; }
+    public List<Challenge>? challenges { get; init; }
 }
