@@ -61,9 +61,6 @@ try
                 {
                     Console.WriteLine($"Failed to get docket {challenge.docketId}: {response.StatusCode}");
                 }
-
-                // Be nice to the API
-                await Task.Delay(1000);
             }
             catch (Exception ex)
             {
