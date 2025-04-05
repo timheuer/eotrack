@@ -16,7 +16,9 @@ params = {
         "presidential_document_number",
         "title",
         "publication_date",
-        "html_url"
+        "html_url",
+        "type",
+        "subtype"
     ]
 }
 
@@ -36,6 +38,7 @@ def format_documents(documents):
             "date": doc['publication_date'],
             "url": doc['html_url'],
             "status": "enacted",
+            "doctype": doc['subtype'],
             "challenges": []  # Placeholder for legal challenges
         }
         formatted_documents.append(formatted_doc)
