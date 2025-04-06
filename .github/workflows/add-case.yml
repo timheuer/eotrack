@@ -2,7 +2,7 @@ name: Add Case
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [labeled]
 
 jobs:
   add-case:
