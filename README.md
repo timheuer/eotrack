@@ -6,13 +6,20 @@ A web application that tracks and monitors U.S. Executive Orders and their curre
 
 EOTrack provides a real-time dashboard of Executive Orders, showing their current status with any legal challenges (enacted, challenged, or overturned) with an easy-to-use interface. The application automatically updates daily by scraping the Federal Registry for new information.
 
+## Data Acknowledgements
+
+The data used here is provided via API access from the following:
+
+- Presidential Documents via the [Federal Register](https://www.federalregister.gov/)
+- Docket/Court updates provided by [Free Law Project](https://free.law/) and [Court Listener](https://www.courtlistener.com/)
+
 ## Features
 
 - 📊 Live tracking of Executive Order statuses
-- 🔍 Search functionality
+- 🔍 Search/filter functionality
 - 🌓 Dark/Light mode support
 - 🤖 Automated daily updates via GitHub Actions
-- 📱 Responsive design with Tailwind CSS
+- 📱 Responsive design
 
 ## Technology Stack
 
