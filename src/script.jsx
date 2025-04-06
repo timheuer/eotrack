@@ -216,6 +216,26 @@ function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated }) {
   );
 }
 
+// Document type filter component
+function DocTypeFilter({ docTypes, onDocTypeChange }) {
+  return (
+    <div className="flex gap-4 items-center mt-4">
+      <span className="text-gray-700 dark:text-gray-300 text-sm">Filter by type:</span>
+      {['Executive Order', 'Proclamation'].map((type) => (
+        <label key={type} className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={docTypes.includes(type.toLowerCase())}
+            onChange={() => onDocTypeChange(type.toLowerCase())}
+            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+          />
+          <span className="text-gray-700 dark:text-gray-300 text-sm">{type}</span>
+        </label>
+      ))}
+    </div>
+  );
+}
+
 function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-auto py-8">
@@ -244,11 +264,22 @@ function App() {
   const [executiveOrders] = React.useState(data);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [statusFilter, setStatusFilter] = React.useState("all");
+  const [docTypeFilter, setDocTypeFilter] = React.useState(['executive order', 'proclamation']);
   const [sortConfig, setSortConfig] = React.useState({
     key: 'date',
     direction: 'desc'
   });
   const [sortByUpdated, setSortByUpdated] = React.useState(false);
+
+  // Handle document type filter changes
+  const handleDocTypeChange = (type) => {
+    setDocTypeFilter(prev => {
+      const newTypes = prev.includes(type)
+        ? prev.filter(t => t !== type)
+        : [...prev, type];
+      return newTypes.length === 0 ? ['executive order', 'proclamation'] : newTypes;
+    });
+  };
 
   // Sorting function
   const handleSort = (key) => {
@@ -275,7 +306,9 @@ function App() {
 
         const matchesStatus = statusFilter === 'all' || eo.status === statusFilter;
 
-        return matchesSearch && matchesStatus;
+        const matchesDocType = docTypeFilter.includes(eo.doctype.toLowerCase());
+
+        return matchesSearch && matchesStatus && matchesDocType;
       })
       .sort((a, b) => {
         if (sortByUpdated) {
@@ -302,7 +335,7 @@ function App() {
           return aValue < bValue ? 1 : -1;
         }
       });
-  }, [executiveOrders, searchQuery, statusFilter, sortConfig, sortByUpdated]);
+  }, [executiveOrders, searchQuery, statusFilter, docTypeFilter, sortConfig, sortByUpdated]);
 
   // Format date according to system preferences
   const formatDate = (dateString) => {
@@ -363,6 +396,10 @@ function App() {
                 statusFilter={statusFilter}
                 onStatusFilterChange={setStatusFilter}
                 onSortByUpdated={handleSortByUpdated}
+              />
+              <DocTypeFilter
+                docTypes={docTypeFilter}
+                onDocTypeChange={handleDocTypeChange}
               />
             </div>
 
