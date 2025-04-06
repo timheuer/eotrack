@@ -26,7 +26,7 @@ def get_docket_latest_entry_date(requests, docket_id):
     url = f"https://www.courtlistener.com/api/rest/v3/dockets/{docket_id}/"
     headers = {
         'Authorization': f'Token {api_key}',
-        'User-Agent': 'EOTrack/1.0'
+        'User-Agent': 'EOTrack/1.0;https://timheuer.github.io/eotrack'
     }
     
     try:

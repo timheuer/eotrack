@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle, Clock } from "@phosphor-icons/react";
+import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle, Clock, Article, Scroll, Gavel } from "@phosphor-icons/react";
 import { MarkGithubIcon, CopilotIcon } from '@primer/octicons-react';
 import data from './data.json';
 
@@ -12,10 +12,37 @@ const isRecentlyUpdated = (dateString) => {
   return diffHours <= 48;
 };
 
+// Format date string for tooltip
+const formatDateForTooltip = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString(undefined, {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
+// Document type icon component
+function DocumentTypeIcon({ type }) {
+  const normalizedType = type.toLowerCase();
+  const Icon = normalizedType === 'executive order' ? Gavel : Scroll;
+  const label = normalizedType === 'executive order' ? 'Executive Order' : 'Proclamation';
+
+  return (
+    <Icon
+      className="w-4 h-4 text-gray-500 dark:text-gray-400 mr-2"
+      weight="fill"
+      aria-label={label}
+      title={label}
+    />
+  );
+}
+
 // Theme context
 const ThemeContext = React.createContext({
   isDark: false,
-  toggleTheme: () => {},
+  toggleTheme: () => { },
 });
 
 // Theme provider component
@@ -51,7 +78,7 @@ function ThemeProvider({ children }) {
         setIsDark(e.matches);
       }
     };
-    
+
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
@@ -68,7 +95,7 @@ function ThemeProvider({ children }) {
 // Theme toggle component
 function ThemeToggle() {
   const { isDark, toggleTheme } = React.useContext(ThemeContext);
-  
+
   return (
     <button
       onClick={toggleTheme}
@@ -110,13 +137,12 @@ function StatusIcon({ status }) {
   if (!IconComponent) return null;
 
   return (
-    <IconComponent 
-      className={`w-5 h-5 ${
-        status === 'enacted' ? 'text-green-500' :
+    <IconComponent
+      className={`w-5 h-5 ${status === 'enacted' ? 'text-green-500' :
         status === 'challenged' ? 'text-yellow-500' :
-        status === 'resolved' ? 'text-green-500' :
-        'text-red-500'
-      }`}
+          status === 'resolved' ? 'text-green-500' :
+            'text-red-500'
+        }`}
       weight="fill"
       aria-label={ariaLabel}
       role="img"
@@ -135,47 +161,57 @@ function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated }) {
       overturned: 0,
       resolved: 0
     };
-    
+
     data.forEach(eo => {
       statusCounts[eo.status]++;
     });
-    
+
     return statusCounts;
   }, []);
 
   return (
-    <div className="flex gap-8 mb-8" role="region" aria-label="Status legend">
-      {[{ status: 'enacted', label: 'Enacted', icon: Circle },
+    <div className="flex justify-between items-center mb-8" role="region" aria-label="Status legend">
+      <div className="flex gap-8">
+        {[{ status: 'enacted', label: 'Enacted', icon: Circle },
         { status: 'challenged', label: 'Challenged', icon: Warning },
         { status: 'resolved', label: 'Resolved', icon: CheckCircle },
         { status: 'overturned', label: 'Overturned', icon: Octagon }
-      ].map(({ status, label, icon: Icon }) => (
+        ].map(({ status, label, icon: Icon }) => (
+          <button
+            key={status}
+            onClick={() => onStatusFilterChange(status === statusFilter ? 'all' : status)}
+            className={`flex items-center gap-2 hover:opacity-80 transition-opacity duration-150 ${status === statusFilter ? 'ring-2 ring-gray-300 dark:ring-gray-600 rounded-lg p-1' : 'p-1'
+              }`}
+            aria-pressed={status === statusFilter}
+            aria-label={`Filter by ${label} status`}
+          >
+            <Icon className={`w-5 h-5 ${status === 'enacted' ? 'text-green-500' :
+              status === 'challenged' ? 'text-yellow-500' :
+                status === 'resolved' ? 'text-green-500' :
+                  'text-red-500'
+              }`} weight="fill" aria-hidden="true" />
+            <span className="text-gray-700 dark:text-gray-300">{label} ({counts[status]})</span>
+          </button>
+        ))}
         <button
-          key={status}
-          onClick={() => onStatusFilterChange(status === statusFilter ? 'all' : status)}
-          className={`flex items-center gap-2 hover:opacity-80 transition-opacity duration-150 ${
-            status === statusFilter ? 'ring-2 ring-gray-300 dark:ring-gray-600 rounded-lg p-1' : 'p-1'
-          }`}
-          aria-pressed={status === statusFilter}
-          aria-label={`Filter by ${label} status`}
+          onClick={onSortByUpdated}
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-150"
+          aria-label="Sort by recently updated cases"
         >
-          <Icon className={`w-5 h-5 ${
-            status === 'enacted' ? 'text-green-500' :
-            status === 'challenged' ? 'text-yellow-500' :
-            status === 'resolved' ? 'text-green-500' :
-            'text-red-500'
-          }`} weight="fill" aria-hidden="true" />
-          <span className="text-gray-700 dark:text-gray-300">{label} ({counts[status]})</span>
+          <Clock className="w-5 h-5 text-blue-500 dark:text-blue-400" weight="fill" aria-hidden="true" />
+          <span className="text-gray-700 dark:text-gray-300">Updated in last 48 hours</span>
         </button>
-      ))}
-      <button 
-        onClick={onSortByUpdated}
-        className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-150"
-        aria-label="Sort by recently updated cases"
-      >
-        <Clock className="w-5 h-5 text-blue-500 dark:text-blue-400" weight="fill" aria-hidden="true" />
-        <span className="text-gray-700 dark:text-gray-300">Updated in last 48 hours</span>
-      </button>
+      </div>
+      <div className="flex gap-4 text-gray-700 dark:text-gray-300 text-sm">
+        <div className="flex items-center gap-2">
+          <Gavel className="w-4 h-4 text-gray-500 dark:text-gray-400" weight="fill" aria-label="Executive Order" />
+          <span>Executive Order</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Scroll className="w-4 h-4 text-gray-500 dark:text-gray-400" weight="fill" aria-label="Proclamation" />
+          <span>Proclamation</span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -232,13 +268,13 @@ function App() {
   const filteredAndSortedOrders = React.useMemo(() => {
     return executiveOrders
       .filter(eo => {
-        const matchesSearch = searchQuery.toLowerCase() === '' || 
+        const matchesSearch = searchQuery.toLowerCase() === '' ||
           eo.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           eo.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
           eo.challenges.some(c => c.title.toLowerCase().includes(searchQuery.toLowerCase()));
-        
+
         const matchesStatus = statusFilter === 'all' || eo.status === statusFilter;
-        
+
         return matchesSearch && matchesStatus;
       })
       .sort((a, b) => {
@@ -252,14 +288,14 @@ function App() {
         }
 
         if (sortConfig.key === 'date') {
-          return sortConfig.direction === 'asc' 
+          return sortConfig.direction === 'asc'
             ? new Date(a.date) - new Date(b.date)
             : new Date(b.date) - new Date(a.date);
         }
-        
+
         const aValue = a[sortConfig.key];
         const bValue = b[sortConfig.key];
-        
+
         if (sortConfig.direction === 'asc') {
           return aValue > bValue ? 1 : -1;
         } else {
@@ -271,14 +307,14 @@ function App() {
   // Format date according to system preferences
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString(undefined, 
+    return date.toLocaleDateString(undefined,
       { dateStyle: 'medium' }
     );
   };
 
   // Column header component with sort indicator
   const SortableHeader = ({ label, sortKey }) => (
-    <th 
+    <th
       className="p-4 cursor-pointer hover:bg-gray-100 transition-colors duration-150 text-left font-semibold text-gray-700"
       onClick={() => handleSort(sortKey)}
     >
@@ -323,13 +359,13 @@ function App() {
               Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders and Proclamations of Donald J. Trump</a> in current term and legal challenges to them in the simplest way. Links to the official presidential records are from the <a href="https://www.federalregister.gov/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Federal Registry</a>, which takes a few days from date of proclamations to register.
             </p>
             <div className="hidden sm:block">
-              <StatusLegend 
-                statusFilter={statusFilter}  
+              <StatusLegend
+                statusFilter={statusFilter}
                 onStatusFilterChange={setStatusFilter}
                 onSortByUpdated={handleSortByUpdated}
               />
             </div>
-            
+
             {/* Search and filters */}
             <div className="mb-6 flex flex-col sm:flex-row gap-4" role="search">
               <div className="flex-1 relative">
@@ -384,15 +420,18 @@ function App() {
                         </td>
                         <td className="p-2 sm:p-4 align-top flex items-center sm:table-cell">
                           <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">EO#:</span>
-                          <a 
-                            href={eo.url}
-                            className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline transition-colors duration-150 text-sm sm:text-base"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`View Executive Order ${eo.id}`}
-                          >
-                            {eo.id}
-                          </a>
+                          <div className="flex items-center">
+                            <DocumentTypeIcon type={eo.doctype} />
+                            <a
+                              href={eo.url}
+                              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline transition-colors duration-150 text-sm sm:text-base"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`View ${eo.subtype === 'executive_order' ? 'Executive Order' : 'Proclamation'} ${eo.id}`}
+                            >
+                              {eo.id}
+                            </a>
+                          </div>
                         </td>
                         <td className="p-2 sm:p-4 align-top text-gray-900 dark:text-white text-sm sm:text-base">
                           <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Title:</span>
@@ -410,7 +449,7 @@ function App() {
                                 <li key={index} className="flex flex-wrap">
                                   <span className="mr-2">•</span>
                                   <div className="flex items-center gap-2 flex-1">
-                                    <a 
+                                    <a
                                       href={challenge.url}
                                       className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150 break-words"
                                       target="_blank"
@@ -420,12 +459,16 @@ function App() {
                                       {challenge.title}
                                     </a>
                                     {isRecentlyUpdated(challenge.lastUpdated) && (
-                                      <Clock 
-                                        className="w-4 h-4 text-blue-500 dark:text-blue-400 flex-shrink-0" 
-                                        weight="fill"
-                                        aria-label="Updated in the last 48 hours"
-                                        title="Updated in the last 48 hours"
-                                      />
+                                      <div className="tooltip-wrapper inline-flex">
+                                        <Clock
+                                          className="w-4 h-4 text-blue-500 dark:text-blue-400 flex-shrink-0"
+                                          weight="fill"
+                                          aria-label="Updated in the last 48 hours"
+                                        />
+                                        <div className="tooltip">
+                                          {formatDateForTooltip(challenge.lastUpdated)}
+                                        </div>
+                                      </div>
                                     )}
                                   </div>
                                 </li>
