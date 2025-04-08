@@ -107,7 +107,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "Add case ${{ steps.get-issue-data.outputs.case-name }} to EO ${{ steps.get-issue-data.outputs.eo-number }}"
-          title: "Add case ${{ steps.get-issue-data.outputs.case-name }} to EO ${{ steps.get-issue-data.outputs.eo-number }}"
+          title: "chore: Add case ${{ steps.get-issue-data.outputs.case-name }} to EO ${{ steps.get-issue-data.outputs.eo-number }}"
           body: |
             Adds new case from issue #${{ github.event.issue.number }}
 
