@@ -31,8 +31,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const inputs = steps.extract-id.outputs.documentId 
-              ? { documentId: steps.extract-id.outputs.documentId }
+            const inputs = '${{ steps.extract-id.outputs.documentId }}'
+              ? { documentId: '${{ steps.extract-id.outputs.documentId }}' }
               : {};
             
             await github.rest.actions.createWorkflowDispatch({
