@@ -45,7 +45,7 @@ def get_docket_latest_entry_date(requests, docket_id):
     
     return None
 
-def update_data_with_latest_docket_dates():
+def update_data_with_latest_docket_dates(single_docket_id=None):
     import json
     requests = ensure_requirements()
     
@@ -75,6 +75,10 @@ def update_data_with_latest_docket_dates():
         if item.get('challenges'):
             for challenge in item['challenges']:
                 if challenge.get('docketId'):
+                    # Skip if we're looking for a specific docket and this isn't it
+                    if single_docket_id and challenge['docketId'] != single_docket_id:
+                        continue
+                        
                     total_dockets += 1
                     print(f"Processing docket {challenge['docketId']}...")
                     latest_date = get_docket_latest_entry_date(requests, challenge['docketId'])
@@ -83,6 +87,16 @@ def update_data_with_latest_docket_dates():
                         updated_dockets += 1
                         updates_made = True
                         print(f"Updated docket {challenge['docketId']} with date {latest_date}")
+                        
+                    # If we found and processed the specific docket, we can break both loops
+                    if single_docket_id:
+                        break
+            if single_docket_id and updates_made:
+                break
+    
+    if single_docket_id and not updates_made:
+        print(f"\nDocket ID {single_docket_id} not found in the data file.")
+        return
     
     print(f"\nProcessed {total_dockets} dockets, updated {updated_dockets}")
     
@@ -106,4 +120,10 @@ def update_data_with_latest_docket_dates():
         print("\nNo updates were needed.")
 
 if __name__ == '__main__':
-    update_data_with_latest_docket_dates()
+    # Check if a docket ID was provided as an argument
+    if len(sys.argv) > 1:
+        docket_id = sys.argv[1]
+        print(f"Updating single docket: {docket_id}")
+        update_data_with_latest_docket_dates(docket_id)
+    else:
+        update_data_with_latest_docket_dates()

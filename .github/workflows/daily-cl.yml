@@ -4,7 +4,12 @@ on:
   schedule:
     # Run at 8:10 AM Pacific (15:10 UTC)
     - cron: "10 15 * * *"
-  workflow_dispatch: # Allow manual triggers
+  workflow_dispatch:
+    inputs:
+      documentId:
+        description: 'Specific Court Listener document ID to update'
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -31,7 +36,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run update script
-        run: python scripts/cl_updater.py
+        run: |
+          if [ -n "${{ inputs.documentId }}" ]; then
+            python scripts/cl_updater.py "${{ inputs.documentId }}"
+          else
+            python scripts/cl_updater.py
+          fi
 
       - name: 🤔 Check for changes
         id: changes

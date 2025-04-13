@@ -15,14 +15,30 @@ jobs:
         pull-requests: write
         actions: write
     steps:
+      - name: Extract document ID from PR body
+        id: extract-id
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prBody = context.payload.pull_request.body;
+            const urlMatch = prBody.match(/Case URL: .*courtlistener\.com\/docket\/(\d+)(\/|$)/i);
+            if (urlMatch) {
+              core.setOutput('documentId', urlMatch[1]);
+            }
+
       - name: Trigger daily-cl workflow
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const inputs = steps.extract-id.outputs.documentId 
+              ? { documentId: steps.extract-id.outputs.documentId }
+              : {};
+            
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'daily-cl.yml',
-              ref: 'main'
+              ref: 'main',
+              inputs: inputs
             });
