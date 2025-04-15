@@ -444,7 +444,6 @@ function App() {
                       <SortableHeader label="EO#" sortKey="id" />
                       <SortableHeader label="Title" sortKey="title" />
                       <SortableHeader label="EO Date" sortKey="date" />
-                      <th className="p-4 text-left font-semibold text-gray-700 dark:text-gray-300 align-top" role="columnheader">Cases</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -472,23 +471,15 @@ function App() {
                         </td>
                         <td className="p-2 sm:p-4 align-top text-gray-900 dark:text-white text-sm sm:text-base">
                           <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Title:</span>
-                          {eo.title}
-                        </td>
-                        <td className="p-2 sm:p-4 align-top whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base">
-                          <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Date:</span>
-                          {formatDate(eo.date)}
-                        </td>
-                        <td className="p-2 sm:p-4 align-top text-sm sm:text-base">
-                          <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Cases:</span>
-                          {eo.challenges.length > 0 ? (
-                            <ul className="list-disc list-inside space-y-2 align-top" aria-label={`Legal challenges for Executive Order ${eo.id}`}>
-                              {eo.challenges.map((challenge, index) => (
-                                <li key={index} className="flex flex-wrap">
-                                  <span className="mr-2">•</span>
-                                  <div className="flex items-center gap-2 flex-1">
+                          <div>
+                            {eo.title}
+                            {eo.challenges.length > 0 ? (
+                              <ul className="flex flex-wrap gap-2 mt-2" aria-label={`Legal challenges for Executive Order ${eo.id}`}>
+                                {eo.challenges.map((challenge, index) => (
+                                  <li key={index} className="flex items-center bg-gray-100 dark:bg-gray-700 rounded px-2 py-1 text-xs text-blue-700 dark:text-blue-300 mb-1">
                                     <a
                                       href={challenge.url}
-                                      className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150 break-words"
+                                      className="hover:underline break-words"
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       aria-label={`View legal challenge: ${challenge.title}`}
@@ -496,24 +487,26 @@ function App() {
                                       {challenge.title}
                                     </a>
                                     {isRecentlyUpdated(challenge.lastUpdated) && (
-                                      <div className="tooltip-wrapper inline-flex">
+                                      <span className="ml-1 tooltip-wrapper inline-flex">
                                         <Clock
-                                          className="w-4 h-4 text-blue-500 dark:text-blue-400 flex-shrink-0"
+                                          className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400 flex-shrink-0"
                                           weight="fill"
                                           aria-label="Updated in the last 48 hours"
                                         />
-                                        <div className="tooltip">
-                                          {formatDateForTooltip(challenge.lastUpdated)}
-                                        </div>
-                                      </div>
+                                        <span className="tooltip">{formatDateForTooltip(challenge.lastUpdated)}</span>
+                                      </span>
                                     )}
-                                  </div>
-                                </li>
-                              ))}
-                            </ul>
-                          ) : (
-                            <span className="text-gray-500 dark:text-gray-400">No challenges</span>
-                          )}
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <div className="mt-2 text-gray-500 dark:text-gray-400 text-xs">No challenges</div>
+                            )}
+                          </div>
+                        </td>
+                        <td className="p-2 sm:p-4 align-top whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                          <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Date:</span>
+                          {formatDate(eo.date)}
                         </td>
                       </tr>
                     ))}
