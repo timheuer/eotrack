@@ -1,0 +1,37 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Source code
+*.cs text diff=csharp
+*.py text diff=python
+*.jsx text diff=javascript
+*.js text
+*.css text diff=css
+*.html text diff=html
+*.json text
+*.md text diff=markdown
+
+# Config files
+*.config text
+*.conf text
+*.yml text
+*.yaml text
+*.toml text
+*.ini text
+
+# Documentation
+LICENSE text
+*.md text
+
+# Images should be treated as binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.gif binary
+*.svg text
+
+# Scripts
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf

@@ -67,9 +67,16 @@
     "title": "Addressing Risks From Susman Godfrey",
     "date": "2025-04-15",
     "url": "https://www.federalregister.gov/documents/2025/04/15/2025-06458/addressing-risks-from-susman-godfrey",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "Susman Godfrey LLP v. Executive Office of the President",
+        "url": "https://www.courtlistener.com/docket/69881953/susman-godfrey-llp-v-executive-office-of-the-president/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "69881953",
+        "lastUpdated": "2025-04-14T00:00:00Z"
+      }
+    ]
   },
   {
     "id": "14262",
@@ -605,12 +612,6 @@
         "url": "https://www.courtlistener.com/docket/69725919/perkins-coie-llp-v-us-department-of-justice/",
         "docketId": "69725919",
         "lastUpdated": "2025-04-11T00:00:00Z"
-      },
-      {
-        "title": "Susman Godfrey LLP v. Executive Office of the President",
-        "url": "https://www.courtlistener.com/docket/69881953/susman-godfrey-llp-v-executive-office-of-the-president/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
-        "docketId": "69881953",
-        "lastUpdated": "2025-04-14T00:00:00Z"
       }
     ]
   },
