@@ -1,4 +1,4 @@
-name: Add Case
+name: Add Case to Track
 
 on:
   issues:

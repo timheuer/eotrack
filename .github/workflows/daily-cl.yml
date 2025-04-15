@@ -1,4 +1,4 @@
-name: Daily Court Listener Update
+name: Court Listener Data Update
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       documentId:
-        description: 'Specific Court Listener document ID to update'
+        description: "Specific Court Listener document ID to update"
         required: false
         type: string
 
@@ -59,7 +59,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: update Court Listener data"
-          title: "Update Court Listener Data"
+          title: "chore: Update Court Listener Data"
           body: |
             Automated update from Court Listener data source.
 

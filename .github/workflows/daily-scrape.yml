@@ -1,4 +1,4 @@
-name: Scrape Federal Registry
+name: Federal Register Data Update
 
 on:
   schedule:
@@ -54,7 +54,7 @@ jobs:
           committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           branch: data-update-${{ steps.date.outputs.date }}
           commit-message: Update data for ${{ steps.date.outputs.date }}
-          title: "chore: Data Update ${{ steps.date.outputs.date }}"
+          title: "chore: Federal Register data update ${{ steps.date.outputs.date }}"
           body: |
             Automated data update from Federal Registry scraper
 
