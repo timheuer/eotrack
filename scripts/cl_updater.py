@@ -78,7 +78,7 @@ def update_data_with_latest_docket_dates(single_docket_id=None):
                     # Skip if we're looking for a specific docket and this isn't it
                     if single_docket_id and challenge['docketId'] != single_docket_id:
                         continue
-                        
+                    
                     total_dockets += 1
                     print(f"Processing docket {challenge['docketId']}...")
                     latest_date = get_docket_latest_entry_date(requests, challenge['docketId'])
@@ -87,14 +87,8 @@ def update_data_with_latest_docket_dates(single_docket_id=None):
                         updated_dockets += 1
                         updates_made = True
                         print(f"Updated docket {challenge['docketId']} with date {latest_date}")
-                        
-                    # If we found and processed the specific docket, we can break both loops
-                    if single_docket_id:
-                        break
-            if single_docket_id and updates_made:
-                break
-    
-    if single_docket_id and not updates_made:
+
+    if single_docket_id and updated_dockets == 0:
         print(f"\nDocket ID {single_docket_id} not found in the data file.")
         return
     
