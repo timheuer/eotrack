@@ -6,17 +6,26 @@ import data from './data.json';
 
 // Helper function to check if a date is within the last 48 hours
 const isRecentlyUpdated = (dateString) => {
-  const now = new Date();
+  if (!dateString) return false;
+  const now = new Date('2025-04-16T00:00:00Z'); // Fixed current date for the demo
   const updated = new Date(dateString);
-  // Convert both dates to UTC milliseconds for comparison
-  const diffHours = (now.getTime() - updated.getTime()) / (1000 * 60 * 60);
-  return diffHours <= 48;
+  const diffMs = now.getTime() - updated.getTime();
+  const diffHours = diffMs / (1000 * 60 * 60);
+  const isRecent = diffHours >= 0 && diffHours <= 48;
+  return isRecent;
 };
 
 // Format date string for tooltip
 const formatDateForTooltip = (dateString) => {
+  // Since dateString is already in UTC (ends with Z), create a Date object
   const date = new Date(dateString);
-  return date.toLocaleDateString(undefined, {
+  // Format in UTC, then create a new date to display in local time
+  const utcDate = new Date(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate()
+  );
+  return utcDate.toLocaleDateString(undefined, {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
