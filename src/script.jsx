@@ -8,7 +8,8 @@ import data from './data.json';
 const isRecentlyUpdated = (dateString) => {
   const now = new Date();
   const updated = new Date(dateString);
-  const diffHours = (now - updated) / (1000 * 60 * 60);
+  // Convert both dates to UTC milliseconds for comparison
+  const diffHours = (now.getTime() - updated.getTime()) / (1000 * 60 * 60);
   return diffHours <= 48;
 };
 
