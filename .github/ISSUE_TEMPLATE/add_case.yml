@@ -30,14 +30,6 @@ body:
       placeholder: https://www.courts.gov/...
     validations:
       required: true
-  - type: input
-    id: filing-date
-    attributes:
-      label: Filing/Decision Date
-      description: The date the case was filed or decided
-      placeholder: YYYY-MM-DD
-    validations:
-      required: false
   - type: textarea
     id: additional-info
     attributes:
