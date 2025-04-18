@@ -59,3 +59,15 @@ jobs:
             Automated data update from Federal Registry scraper
 
             - Updated src/data.json
+
+      - name: Trigger daily-cl workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'daily-cl.yml',
+              ref: 'main'
+            });

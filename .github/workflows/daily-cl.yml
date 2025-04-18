@@ -1,9 +1,6 @@
 name: Court Listener Data Update
 
 on:
-  schedule:
-    # Run at 8:10 AM Pacific (15:10 UTC)
-    - cron: "10 15 * * *"
   workflow_dispatch:
     inputs:
       documentId:
