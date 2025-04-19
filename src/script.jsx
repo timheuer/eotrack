@@ -7,7 +7,7 @@ import data from './data.json';
 // Helper function to check if a date is within the last 48 hours
 const isRecentlyUpdated = (dateString) => {
   if (!dateString) return false;
-  const now = new Date('2025-04-16T00:00:00Z'); // Fixed current date for the demo
+  const now = new Date(); // Fixed current date for the demo
   const updated = new Date(dateString);
   const diffMs = now.getTime() - updated.getTime();
   const diffHours = diffMs / (1000 * 60 * 60);
