@@ -23,7 +23,7 @@ def get_docket_latest_entry_date(requests, docket_id):
         print("Error: CL_API_KEY environment variable is not set in the process environment")
         return None
         
-    url = f"https://www.courtlistener.com/api/rest/v3/dockets/{docket_id}/"
+    url = f"https://www.courtlistener.com/api/rest/v4/dockets/{docket_id}/"
     headers = {
         'Authorization': f'Token {api_key}',
         'User-Agent': 'EOTrack/1.0;https://timheuer.github.io/eotrack'
