@@ -480,69 +480,77 @@ function App() {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                                        {filteredAndSortedOrders.map((eo) => (
-                                            <tr key={eo.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150" role="row">
-                                                <td className="p-2 sm:p-4 align-top flex items-center sm:table-cell">
-                                                    <div className="flex items-start">
-                                                        <StatusIcon status={eo.status} />
-                                                    </div>
-                                                </td>
-                                                <td className="p-2 sm:p-4 align-top flex items-center sm:table-cell">
-                                                    <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">EO#:</span>
-                                                    <div className="flex items-center">
-                                                        <DocumentTypeIcon type={eo.doctype} />
-                                                        <a
-                                                            href={eo.url}
-                                                            className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline transition-colors duration-150 text-sm sm:text-base"
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            aria-label={`View ${eo.subtype === 'executive_order' ? 'Executive Order' : 'Proclamation'} ${eo.id}`}
-                                                        >
-                                                            {eo.id}
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td className="p-2 sm:p-4 align-top text-gray-900 dark:text-white text-sm sm:text-base">
-                                                    <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Title:</span>
-                                                    <div>
-                                                        {eo.title}
-                                                        {eo.challenges.length > 0 ? (
-                                                            <ul className="flex flex-wrap gap-2 mt-2" aria-label={`Legal challenges for Executive Order ${eo.id}`}>
-                                                                {eo.challenges.map((challenge, index) => (
-                                                                    <li key={index} className="flex items-center bg-gray-100 dark:bg-gray-700 rounded px-2 py-1 text-xs text-blue-700 dark:text-blue-300 mb-1">
-                                                                        <a
-                                                                            href={challenge.url}
-                                                                            className="hover:underline break-words"
-                                                                            target="_blank"
-                                                                            rel="noopener noreferrer"
-                                                                            aria-label={`View legal challenge: ${challenge.title}`}
-                                                                        >
-                                                                            {challenge.title}
-                                                                        </a>
-                                                                        {isRecentlyUpdated(challenge.lastUpdated) && (
-                                                                            <span className="ml-1 tooltip-wrapper inline-flex">
-                                                                                <Clock
-                                                                                    className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400 flex-shrink-0"
-                                                                                    weight="fill"
-                                                                                    aria-label="Updated in the last 48 hours"
-                                                                                />
-                                                                                <span className="tooltip">{formatDateForTooltip(challenge.lastUpdated)}</span>
-                                                                            </span>
-                                                                        )}
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
-                                                        ) : (
-                                                            <div className="mt-2 text-gray-500 dark:text-gray-400 text-xs">No challenges</div>
-                                                        )}
-                                                    </div>
-                                                </td>
-                                                <td className="p-2 sm:p-4 align-top whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base">
-                                                    <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Date:</span>
-                                                    {formatDate(eo.date)}
+                                        {filteredAndSortedOrders.length === 0 ? (
+                                            <tr>
+                                                <td colSpan="4" className="p-4 text-center text-gray-500 dark:text-gray-400">
+                                                    Nothing matches this filter at this time.
                                                 </td>
                                             </tr>
-                                        ))}
+                                        ) : (
+                                            filteredAndSortedOrders.map((eo) => (
+                                                <tr key={eo.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150" role="row">
+                                                    <td className="p-2 sm:p-4 align-top flex items-center sm:table-cell">
+                                                        <div className="flex items-start">
+                                                            <StatusIcon status={eo.status} />
+                                                        </div>
+                                                    </td>
+                                                    <td className="p-2 sm:p-4 align-top flex items-center sm:table-cell">
+                                                        <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">EO#:</span>
+                                                        <div className="flex items-center">
+                                                            <DocumentTypeIcon type={eo.doctype} />
+                                                            <a
+                                                                href={eo.url}
+                                                                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline transition-colors duration-150 text-sm sm:text-base"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                aria-label={`View ${eo.subtype === 'executive_order' ? 'Executive Order' : 'Proclamation'} ${eo.id}`}
+                                                            >
+                                                                {eo.id}
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td className="p-2 sm:p-4 align-top text-gray-900 dark:text-white text-sm sm:text-base">
+                                                        <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Title:</span>
+                                                        <div>
+                                                            {eo.title}
+                                                            {eo.challenges.length > 0 ? (
+                                                                <ul className="flex flex-wrap gap-2 mt-2" aria-label={`Legal challenges for Executive Order ${eo.id}`}>
+                                                                    {eo.challenges.map((challenge, index) => (
+                                                                        <li key={index} className="flex items-center bg-gray-100 dark:bg-gray-700 rounded px-2 py-1 text-xs text-blue-700 dark:text-blue-300 mb-1">
+                                                                            <a
+                                                                                href={challenge.url}
+                                                                                className="hover:underline break-words"
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                                aria-label={`View legal challenge: ${challenge.title}`}
+                                                                            >
+                                                                                {challenge.title}
+                                                                            </a>
+                                                                            {isRecentlyUpdated(challenge.lastUpdated) && (
+                                                                                <span className="ml-1 tooltip-wrapper inline-flex">
+                                                                                    <Clock
+                                                                                        className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400 flex-shrink-0"
+                                                                                        weight="fill"
+                                                                                        aria-label="Updated in the last 48 hours"
+                                                                                    />
+                                                                                    <span className="tooltip">{formatDateForTooltip(challenge.lastUpdated)}</span>
+                                                                                </span>
+                                                                            )}
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            ) : (
+                                                                <div className="mt-2 text-gray-500 dark:text-gray-400 text-xs">No challenges</div>
+                                                            )}
+                                                        </div>
+                                                    </td>
+                                                    <td className="p-2 sm:p-4 align-top whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                                                        <span className="sm:hidden mr-2 text-gray-500 dark:text-gray-400">Date:</span>
+                                                        {formatDate(eo.date)}
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        )}
                                     </tbody>
                                 </table>
                             </div>
