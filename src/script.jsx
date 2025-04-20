@@ -7,7 +7,9 @@ import data from './data.json';
 // Helper function to check if a date is within the last 48 hours
 const isRecentlyUpdated = (dateString) => {
   if (!dateString) return false;
-  const now = new Date(); // Fixed current date for the demo
+  const now = new Date(); // Current date 
+  now.setHours(0, 0, 0, 0);
+  now.setUTCHours(0, 0, 0, 0);
   const updated = new Date(dateString);
   const diffMs = now.getTime() - updated.getTime();
   const diffHours = diffMs / (1000 * 60 * 60);
