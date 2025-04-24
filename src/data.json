@@ -157,9 +157,20 @@
     "title": "Modifying Reciprocal Tariff Rates To Reflect Trading Partner Retaliation and Alignment",
     "date": "2025-04-15",
     "url": "https://www.federalregister.gov/documents/2025/04/15/2025-06462/modifying-reciprocal-tariff-rates-to-reflect-trading-partner-retaliation-and-alignment",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      },
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "14265",
@@ -227,9 +238,15 @@
     "title": "Amendment to Reciprocal Tariffs and Updated Duties as Applied to Low-Value Imports From the People's Republic of China",
     "date": "2025-04-14",
     "url": "https://www.federalregister.gov/documents/2025/04/14/2025-06378/amendment-to-reciprocal-tariffs-and-updated-duties-as-applied-to-low-value-imports-from-the-peoples",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "14258",
@@ -295,6 +312,16 @@
         "url": "https://www.courtlistener.com/docket/69888953/vos-selections-inc-v-donald-j-trump/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
         "docketId": "69888953",
         "lastUpdated": "2025-04-23T00:00:00Z"
+      },
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      },
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
       }
     ]
   },
@@ -303,9 +330,15 @@
     "title": "Further Amendment to Duties Addressing the Synthetic Opioid Supply Chain in the People's Republic of China as Applied to Low-Value Imports",
     "date": "2025-04-07",
     "url": "https://www.federalregister.gov/documents/2025/04/07/2025-06027/further-amendment-to-duties-addressing-the-synthetic-opioid-supply-chain-in-the-peoples-republic-of",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "10909",
@@ -736,18 +769,30 @@
     "title": "Amendment to Duties To Address the Flow of Illicit Drugs Across Our Southern Border",
     "date": "2025-03-11",
     "url": "https://www.federalregister.gov/documents/2025/03/11/2025-03991/amendment-to-duties-to-address-the-flow-of-illicit-drugs-across-our-southern-border",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "14231",
     "title": "Amendment to Duties To Address the Flow of Illicit Drugs Across Our Northern Border",
     "date": "2025-03-11",
     "url": "https://www.federalregister.gov/documents/2025/03/11/2025-03990/amendment-to-duties-to-address-the-flow-of-illicit-drugs-across-our-northern-border",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "14230",
@@ -812,9 +857,15 @@
     "title": "Further Amendment to Duties Addressing the Synthetic Opioid Supply Chain in the People's Republic of China",
     "date": "2025-03-07",
     "url": "https://www.federalregister.gov/documents/2025/03/07/2025-03775/further-amendment-to-duties-addressing-the-synthetic-opioid-supply-chain-in-the-peoples-republic-of",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "14227",
@@ -1225,9 +1276,15 @@
     "title": "Progress on the Situation at Our Northern Border",
     "date": "2025-02-10",
     "url": "https://www.federalregister.gov/documents/2025/02/10/2025-02478/progress-on-the-situation-at-our-northern-border",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "14196",
@@ -1243,27 +1300,45 @@
     "title": "Imposing Duties To Address the Synthetic Opioid Supply Chain in the People's Republic of China",
     "date": "2025-02-07",
     "url": "https://www.federalregister.gov/documents/2025/02/07/2025-02408/imposing-duties-to-address-the-synthetic-opioid-supply-chain-in-the-peoples-republic-of-china",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "14194",
     "title": "Imposing Duties To Address the Situation at Our Southern Border",
     "date": "2025-02-07",
     "url": "https://www.federalregister.gov/documents/2025/02/07/2025-02407/imposing-duties-to-address-the-situation-at-our-southern-border",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "14193",
     "title": "Imposing Duties To Address the Flow of Illicit Drugs Across Our Northern Border",
     "date": "2025-02-07",
     "url": "https://www.federalregister.gov/documents/2025/02/07/2025-02406/imposing-duties-to-address-the-flow-of-illicit-drugs-across-our-northern-border",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "The State of Oregon v. Trump",
+        "url": "https://www.courtlistener.com/docket/69931546/the-state-of-oregon-v-trump/?&order_by=desc",
+        "docketId": "69931546"
+      }
+    ]
   },
   {
     "id": "10893",
