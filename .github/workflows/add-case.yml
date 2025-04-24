@@ -31,7 +31,9 @@ jobs:
               const line = lines[i];
               console.log(`Line ${i}: ${line}`);
               if (line.includes('### Executive Order Number')) {
-                data.eoNumber = lines[i + 2].trim();
+                const eoLine = lines[i + 2].trim();
+                // Split by comma and trim each number
+                data.eoNumbers = eoLine.split(',').map(num => num.trim());
               }
               if (line.includes('### Case Name')) {
                 data.caseName = lines[i + 2].trim();
@@ -46,7 +48,13 @@ jobs:
               return;
             }
 
-            core.setOutput('eo-number', data.eoNumber);
+            if (!data.eoNumbers || data.eoNumbers.length === 0) {
+              core.setFailed('At least one Executive Order number is required');
+              return;
+            }
+
+            // Join multiple EO numbers with semicolon for output
+            core.setOutput('eo-number', data.eoNumbers.join(';'));
             core.setOutput('case-name', data.caseName);
             core.setOutput('case-url', data.caseUrl);
 
@@ -59,7 +67,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const eoNumber = '${{ steps.get-issue-data.outputs.eo-number }}';
+            const eoNumbers = '${{ steps.get-issue-data.outputs.eo-number }}'.split(';');
             const caseName = '${{ steps.get-issue-data.outputs.case-name }}';
             const caseUrl = '${{ steps.get-issue-data.outputs.case-url }}';
 
@@ -74,28 +82,31 @@ jobs:
 
             const data = JSON.parse(fs.readFileSync('src/data.json', 'utf8'));
 
-            const eo = data.find(item => item.id === eoNumber);
-            if (!eo) {
-              core.setFailed(`Executive Order ${eoNumber} not found`);
-              return;
-            }
+            // Process each EO number
+            for (const eoNumber of eoNumbers) {
+              const eo = data.find(item => item.id === eoNumber);
+              if (!eo) {
+                core.setFailed(`Executive Order ${eoNumber} not found`);
+                return;
+              }
 
-            if (!eo.challenges) {
-              eo.challenges = [];
-            }
+              if (!eo.challenges) {
+                eo.challenges = [];
+              }
 
-            // Add challenge with docketId if it exists
-            const challenge = {
-              title: caseName,
-              url: caseUrl
-            };
-            if (docketId) {
-              challenge.docketId = docketId;
-            }
-            eo.challenges.push(challenge);
+              // Add challenge with docketId if it exists
+              const challenge = {
+                title: caseName,
+                url: caseUrl
+              };
+              if (docketId) {
+                challenge.docketId = docketId;
+              }
+              eo.challenges.push(challenge);
 
-            if (eo.status === 'enacted') {
-              eo.status = 'challenged';
+              if (eo.status === 'enacted') {
+                eo.status = 'challenged';
+              }
             }
 
             // Convert to JSON with 2 spaces indentation and ensure LF line endings
@@ -106,14 +117,14 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: "Add case ${{ steps.get-issue-data.outputs.case-name }} to EO ${{ steps.get-issue-data.outputs.eo-number }}"
-          title: "chore: Add case ${{ steps.get-issue-data.outputs.case-name }} to EO ${{ steps.get-issue-data.outputs.eo-number }}"
+          commit-message: 'Add case "${{steps.get-issue-data.outputs.case-name}}" to EOs ${{steps.get-issue-data.outputs.eo-number}}'
+          title: 'chore: Add case "${{steps.get-issue-data.outputs.case-name}}" to EOs ${{steps.get-issue-data.outputs.eo-number}}'
           body: |
-            Adds new case from issue #${{ github.event.issue.number }}
+            Adds new case from issue #${{github.event.issue.number}}
 
-            Case Name: ${{ steps.get-issue-data.outputs.case-name }}
-            Case URL: ${{ steps.get-issue-data.outputs.case-url }}
-            EO Number: ${{ steps.get-issue-data.outputs.eo-number }}
+            Case Name: ${{steps.get-issue-data.outputs.case-name}}
+            Case URL: ${{steps.get-issue-data.outputs.case-url}}
+            Executive Orders: ${{steps.get-issue-data.outputs.eo-number}}
           branch: add-case/${{ github.event.issue.number }}
           labels: case-addition
 
