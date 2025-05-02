@@ -183,7 +183,7 @@ function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated }) {
 
     return (
         <div className="flex justify-between items-center mb-8" role="region" aria-label="Status legend">
-            <div className="flex gap-8">
+            <div className="flex gap-2 sm:gap-8">
                 {[{ status: 'enacted', label: 'Enacted', icon: Circle },
                 { status: 'challenged', label: 'Challenged', icon: Warning },
                 { status: 'resolved', label: 'Resolved', icon: CheckCircle },
@@ -192,36 +192,35 @@ function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated }) {
                     <button
                         key={status}
                         onClick={() => onStatusFilterChange(status === statusFilter ? 'all' : status)}
-                        className={`flex items-center gap-2 hover:opacity-80 transition-opacity duration-150 ${status === statusFilter ? 'ring-2 ring-gray-300 dark:ring-gray-600 rounded-lg p-1' : 'p-1'
-                            }`}
+                        className={`flex items-center gap-1 sm:gap-2 hover:opacity-80 transition-opacity duration-150 ${status === statusFilter ? 'ring-2 ring-gray-300 dark:ring-gray-600 rounded-lg p-1' : 'p-1'}`}
                         aria-pressed={status === statusFilter}
                         aria-label={`Filter by ${label} status`}
                     >
-                        <Icon className={`w-5 h-5 ${status === 'enacted' ? 'text-green-500' :
+                        <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${status === 'enacted' ? 'text-green-500' :
                             status === 'challenged' ? 'text-yellow-500' :
                                 status === 'resolved' ? 'text-green-500' :
                                     'text-red-500'
                             }`} weight="fill" aria-hidden="true" />
-                        <span className="text-gray-700 dark:text-gray-300">{label} ({counts[status]})</span>
+                        <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap">{label} ({counts[status]})</span>
                     </button>
                 ))}
                 <button
                     onClick={onSortByUpdated}
-                    className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-150"
+                    className="flex items-center gap-1 sm:gap-2 hover:opacity-80 transition-opacity duration-150"
                     aria-label="Sort by recently updated cases"
                 >
-                    <Clock className="w-5 h-5 text-blue-500 dark:text-blue-400" weight="fill" aria-hidden="true" />
-                    <span className="text-gray-700 dark:text-gray-300">Updated in last 48 hours</span>
+                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 dark:text-blue-400" weight="fill" aria-hidden="true" />
+                    <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap">Updated in last 48h</span>
                 </button>
             </div>
-            <div className="flex gap-4 text-gray-700 dark:text-gray-300 text-sm">
-                <div className="flex items-center gap-2">
-                    <Gavel className="w-4 h-4 text-gray-500 dark:text-gray-400" weight="fill" aria-label="Executive Order" />
-                    <span>Executive Order</span>
+            <div className="flex gap-2 sm:gap-4 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+                <div className="flex items-center gap-1 sm:gap-2">
+                    <Gavel className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500 dark:text-gray-400" weight="fill" aria-label="Executive Order" />
+                    <span className="hidden sm:inline">Executive Order</span>
                 </div>
-                <div className="flex items-center gap-2">
-                    <Scroll className="w-4 h-4 text-gray-500 dark:text-gray-400" weight="fill" aria-label="Proclamation" />
-                    <span>Proclamation</span>
+                <div className="flex items-center gap-1 sm:gap-2">
+                    <Scroll className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500 dark:text-gray-400" weight="fill" aria-label="Proclamation" />
+                    <span className="hidden sm:inline">Proclamation</span>
                 </div>
             </div>
         </div>
