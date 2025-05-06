@@ -1425,9 +1425,15 @@
     "title": "Imposing Sanctions on the International Criminal Court",
     "date": "2025-02-12",
     "url": "https://www.federalregister.gov/documents/2025/02/12/2025-02612/imposing-sanctions-on-the-international-criminal-court",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "IVERSON v. TRUMP",
+        "url": "https://www.courtlistener.com/docket/70131495/iverson-v-trump/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "70131495"
+      }
+    ]
   },
   {
     "id": "14202",
