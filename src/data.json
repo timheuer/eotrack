@@ -184,9 +184,15 @@
     "title": "Ending Taxpayer Subsidization of Biased Media",
     "date": "2025-05-07",
     "url": "https://www.federalregister.gov/documents/2025/05/07/2025-08133/ending-taxpayer-subsidization-of-biased-media",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "NATIONAL PUBLIC RADIO, INC. v. TRUMP",
+        "url": "https://www.courtlistener.com/docket/70376503/national-public-radio-inc-v-trump/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "70376503"
+      }
+    ]
   },
   {
     "id": "10929",
