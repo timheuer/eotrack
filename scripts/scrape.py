@@ -10,7 +10,7 @@ params = {
     "order": "newest",  # Order by newest first
     "conditions[president][]": "donald-trump",  # Filter by President Donald J. Trump
     "conditions[type][]": ["PRESDOCU"],  # Include both executive orders and proclamations
-    "conditions[presidential_document_type][]": ["executive_order","proclamation"],
+    "conditions[presidential_document_type][]": ["executive_order","proclamation","memorandum"],
     "conditions[publication_date][gte]": "2025-01-19",
     "fields[]": [
         "presidential_document_number",
