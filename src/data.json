@@ -1003,6 +1003,11 @@
         "url": "https://www.courtlistener.com/docket/69823792/league-of-united-latin-american-citizens-v-executive-office-of-the/?order_by=desc",
         "docketId": "69823792",
         "lastUpdated": "2025-06-09T00:00:00Z"
+      },
+      {
+        "title": "State of California v. Trump",
+        "url": "https://www.courtlistener.com/docket/69841778/state-of-california-v-trump/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "69841778"
       }
     ]
   },
