@@ -14,6 +14,7 @@ params = {
     "conditions[publication_date][gte]": "2025-01-19",
     "fields[]": [
         "presidential_document_number",
+        "document_number",
         "title",
         "publication_date",
         "html_url",
@@ -31,8 +32,9 @@ def fetch_documents():
 def format_documents(documents):
     formatted_documents = []
     for doc in documents:
+        doc_id = doc['presidential_document_number'] if doc['presidential_document_number'] else doc['document_number']
         formatted_doc = {
-            "id": doc['presidential_document_number'],
+            "id": doc_id,
             "title": doc['title'],
             "date": doc['publication_date'],
             "url": doc['html_url'],
