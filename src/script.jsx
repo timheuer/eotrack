@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle, Clock, Article, Scroll, Gavel } from "@phosphor-icons/react";
+import { Circle, Warning, Octagon, MagnifyingGlass, CaretUp, CaretDown, Moon, Sun, CheckCircle, Clock, Article, Scroll, Gavel, Note } from "@phosphor-icons/react";
 import { MarkGithubIcon, CopilotIcon } from '@primer/octicons-react';
 import data from './data.json';
 
@@ -38,8 +38,10 @@ const formatDateForTooltip = (dateString) => {
 // Document type icon component
 function DocumentTypeIcon({ type }) {
     const normalizedType = type.toLowerCase();
-    const Icon = normalizedType === 'executive order' ? Gavel : Scroll;
-    const label = normalizedType === 'executive order' ? 'Executive Order' : 'Proclamation';
+    const Icon = normalizedType === 'executive order' ? Gavel : 
+                 normalizedType === 'memorandum' ? Note : Scroll;
+    const label = normalizedType === 'executive order' ? 'Executive Order' : 
+                  normalizedType === 'memorandum' ? 'Memorandum' : 'Proclamation';
 
     return (
         <Icon
@@ -222,6 +224,10 @@ function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated }) {
                     <Scroll className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500 dark:text-gray-400" weight="fill" aria-label="Proclamation" />
                     <span className="hidden sm:inline">Proclamation</span>
                 </div>
+                <div className="flex items-center gap-1 sm:gap-2">
+                    <Note className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500 dark:text-gray-400" weight="fill" aria-label="Memorandum" />
+                    <span className="hidden sm:inline">Memorandum</span>
+                </div>
             </div>
         </div>
     );
@@ -232,7 +238,7 @@ function DocTypeFilter({ docTypes, onDocTypeChange }) {
     return (
         <div className="flex gap-4 items-center mt-4">
             <span className="text-gray-700 dark:text-gray-300 text-sm">Filter by type:</span>
-            {['Executive Order', 'Proclamation'].map((type) => (
+            {['Executive Order', 'Proclamation', 'Memorandum'].map((type) => (
                 <label key={type} className="flex items-center gap-2 cursor-pointer">
                     <input
                         type="checkbox"
@@ -421,7 +427,7 @@ function App() {
                             </div>
                         </div>
                         <p className="text-gray-700 dark:text-gray-300 mb-6 hidden sm:block">
-                            Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders and Proclamations of Donald J. Trump</a> in current term and legal challenges to them in the simplest way. Links to the official presidential records are from the <a href="https://www.federalregister.gov/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Federal Registry</a>, which takes a few days from date of proclamations to register.
+                            Tracking the <a href="https://www.whitehouse.gov/presidential-actions/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Executive Orders, Proclamations, and Memoranda of Donald J. Trump</a> in current term and legal challenges to them in the simplest way. Links to the official presidential records are from the <a href="https://www.federalregister.gov/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors duration-150">Federal Registry</a>, which takes a few days from date of proclamations to register.
                         </p>
                         <div className="hidden sm:block">
                             <StatusLegend
@@ -469,7 +475,7 @@ function App() {
                         {/* Table of Executive Orders */}
                         <div className="overflow-hidden rounded-xl shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                             <div className="overflow-auto max-h-[calc(100vh-300px)]">
-                                <table className="w-full border-collapse bg-white dark:bg-gray-800" role="grid" aria-label="Executive Orders">
+                                <table className="w-full border-collapse bg-white dark:bg-gray-800" role="grid" aria-label="Presidential Documents">
                                     <thead className="static sm:sticky top-0 bg-gray-50 dark:bg-gray-900 z-10">
                                         <tr className="border-b border-gray-200 dark:border-gray-700" role="row">
                                             <th className="p-4 text-left font-semibold text-gray-700 dark:text-gray-300 align-top" role="columnheader" aria-label="Status">Status</th>
@@ -502,7 +508,7 @@ function App() {
                                                                 className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline transition-colors duration-150 text-sm sm:text-base"
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
-                                                                aria-label={`View ${eo.subtype === 'executive_order' ? 'Executive Order' : 'Proclamation'} ${eo.id}`}
+                                                                aria-label={`View ${eo.subtype === 'executive_order' ? 'Executive Order' : eo.subtype === 'memorandum' ? 'Memorandum' : 'Proclamation'} ${eo.id}`}
                                                             >
                                                                 {eo.id}
                                                             </a>
@@ -513,7 +519,7 @@ function App() {
                                                         <div>
                                                             {eo.title}
                                                             {eo.challenges.length > 0 ? (
-                                                                <ul className="flex flex-wrap gap-2 mt-2" aria-label={`Legal challenges for Executive Order ${eo.id}`}>
+                                                                <ul className="flex flex-wrap gap-2 mt-2" aria-label={`Legal challenges for ${eo.subtype === 'executive_order' ? 'Executive Order' : eo.subtype === 'memorandum' ? 'Memorandum' : 'Proclamation'} ${eo.id}`}>
                                                                     {eo.challenges.map((challenge, index) => (
                                                                         <li key={index} className="flex items-center bg-gray-100 dark:bg-gray-700 rounded px-2 py-1 text-xs text-blue-700 dark:text-blue-300 mb-1">
                                                                             <a
