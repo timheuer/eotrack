@@ -2004,9 +2004,15 @@
     "title": "Implementing the President's \"Department of Government Efficiency\" Cost Efficiency Initiative",
     "date": "2025-03-03",
     "url": "https://www.federalregister.gov/documents/2025/03/03/2025-03527/implementing-the-presidents-department-of-government-efficiency-cost-efficiency-initiative",
-    "status": "enacted",
+    "status": "challenged",
     "doctype": "Executive Order",
-    "challenges": []
+    "challenges": [
+      {
+        "title": "BUILDING MATERIALS RE-USE ASSOCIATION v. UNITED STATES ENVIRONMENTAL PROTECTION AGENCY",
+        "url": "https://www.courtlistener.com/docket/70981023/building-materials-re-use-association-v-united-states-environmental/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "70981023"
+      }
+    ]
   },
   {
     "id": "14221",
@@ -3608,6 +3614,11 @@
         "url": "https://www.courtlistener.com/docket/69733481/butterbee-farm/",
         "docketId": "69733481",
         "lastUpdated": "2025-08-17T00:00:00Z"
+      },
+      {
+        "title": "BUILDING MATERIALS RE-USE ASSOCIATION v. UNITED STATES ENVIRONMENTAL PROTECTION AGENCY",
+        "url": "https://www.courtlistener.com/docket/70981023/building-materials-re-use-association-v-united-states-environmental/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "70981023"
       }
     ]
   },
@@ -3702,6 +3713,11 @@
         "url": "https://www.courtlistener.com/docket/69740178/parties/doe-v-collins/",
         "docketId": "69740178",
         "lastUpdated": "2025-07-21T00:00:00Z"
+      },
+      {
+        "title": "BUILDING MATERIALS RE-USE ASSOCIATION v. UNITED STATES ENVIRONMENTAL PROTECTION AGENCY",
+        "url": "https://www.courtlistener.com/docket/70981023/building-materials-re-use-association-v-united-states-environmental/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "70981023"
       }
     ]
   },
