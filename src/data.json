@@ -2638,6 +2638,11 @@
         "url": "https://www.courtlistener.com/docket/69620657/state-of-washington-v-department-of-justice/",
         "docketId": "69620657",
         "lastUpdated": "2025-08-18T00:00:00Z"
+      },
+      {
+        "title": "Commonwealth of Massachusetts v. Trump",
+        "url": "https://www.courtlistener.com/docket/70989506/commonwealth-of-massachusetts-v-trump/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "70989506"
       }
     ]
   },
@@ -3070,6 +3075,11 @@
         "url": "https://www.courtlistener.com/docket/69895267/doe-1-v-eeoc/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
         "docketId": "69895267",
         "lastUpdated": "2025-08-15T00:00:00Z"
+      },
+      {
+        "title": "Commonwealth of Massachusetts v. Trump",
+        "url": "https://www.courtlistener.com/docket/70989506/commonwealth-of-massachusetts-v-trump/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+        "docketId": "70989506"
       }
     ]
   },
