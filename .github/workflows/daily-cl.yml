@@ -1,6 +1,8 @@
-name: Court Listener Data Update
+name: Court Listener Data Update (Weekly)
 
 on:
+  schedule:
+    - cron: "0 15 * * 5" # Runs at 15:00 UTC (8 AM PT) every Friday
   workflow_dispatch:
     inputs:
       documentId:
@@ -60,6 +62,6 @@ jobs:
           body: |
             Automated update from Court Listener data source.
 
-            This PR was automatically created by the daily update workflow.
+            This PR was automatically created by the weekly update workflow.
           branch: automated-cl-update
           delete-branch: true
