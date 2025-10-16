@@ -2,7 +2,7 @@ name: Federal Register Data Update
 
 on:
   schedule:
-    - cron: "0 15 * * 1-5" # Runs at 15:00 UTC (8 AM PT) M-F
+    - cron: "0 15 * * 5" # Runs at 15:00 UTC (8 AM PT) every Friday
   workflow_dispatch: # Allows manual triggering
 
 permissions:
