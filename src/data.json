@@ -225,15 +225,6 @@
     "challenges": []
   },
   {
-    "id": "2025-19141",
-    "title": "Countering Domestic Terrorism and Organized Political Violence",
-    "date": "2025-09-30",
-    "url": "https://www.federalregister.gov/documents/2025/09/30/2025-19141/countering-domestic-terrorism-and-organized-political-violence",
-    "status": "enacted",
-    "doctype": "Memorandum",
-    "challenges": []
-  },
-  {
     "id": "14352",
     "title": "Saving TikTok While Protecting National Security",
     "date": "2025-09-30",
@@ -249,6 +240,15 @@
     "url": "https://www.federalregister.gov/documents/2025/09/30/2025-19138/gold-star-mothers-and-familys-day-2025",
     "status": "enacted",
     "doctype": "Proclamation",
+    "challenges": []
+  },
+  {
+    "id": "2025-19141",
+    "title": "Countering Domestic Terrorism and Organized Political Violence",
+    "date": "2025-09-30",
+    "url": "https://www.federalregister.gov/documents/2025/09/30/2025-19141/countering-domestic-terrorism-and-organized-political-violence",
+    "status": "enacted",
+    "doctype": "Memorandum",
     "challenges": []
   },
   {
