@@ -38,10 +38,10 @@ const formatDateForTooltip = (dateString) => {
 // Document type icon component
 function DocumentTypeIcon({ type }) {
     const normalizedType = type.toLowerCase();
-    const Icon = normalizedType === 'executive order' ? Gavel : 
-                 normalizedType === 'memorandum' ? Note : Scroll;
-    const label = normalizedType === 'executive order' ? 'Executive Order' : 
-                  normalizedType === 'memorandum' ? 'Memorandum' : 'Proclamation';
+    const Icon = normalizedType === 'executive order' ? Gavel :
+        normalizedType === 'memorandum' ? Note : Scroll;
+    const label = normalizedType === 'executive order' ? 'Executive Order' :
+        normalizedType === 'memorandum' ? 'Memorandum' : 'Proclamation';
 
     return (
         <Icon
@@ -166,7 +166,7 @@ function StatusIcon({ status }) {
 }
 
 // Legend component
-function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated }) {
+function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated, sortByUpdated }) {
     // Calculate counts
     const counts = React.useMemo(() => {
         const statusCounts = {
@@ -208,8 +208,9 @@ function StatusLegend({ statusFilter, onStatusFilterChange, onSortByUpdated }) {
                 ))}
                 <button
                     onClick={onSortByUpdated}
-                    className="flex items-center gap-1 sm:gap-2 hover:opacity-80 transition-opacity duration-150"
-                    aria-label="Sort by recently updated cases"
+                    className={`flex items-center gap-1 sm:gap-2 hover:opacity-80 transition-opacity duration-150 ${sortByUpdated ? 'ring-2 ring-gray-300 dark:ring-gray-600 rounded-lg p-1' : 'p-1'}`}
+                    aria-pressed={sortByUpdated}
+                    aria-label="Filter by recently updated cases"
                 >
                     <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 dark:text-blue-400" weight="fill" aria-hidden="true" />
                     <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap">Updated in last 48h</span>
@@ -308,8 +309,10 @@ function App() {
     };
 
     const handleSortByUpdated = () => {
-        setSortByUpdated(true);
-        setSortConfig({ key: 'lastUpdated', direction: 'desc' });
+        setSortByUpdated(!sortByUpdated);
+        if (!sortByUpdated) {
+            setSortConfig({ key: 'lastUpdated', direction: 'desc' });
+        }
     };
 
     // Filter and sort the data
@@ -325,36 +328,32 @@ function App() {
 
                 const matchesDocType = docTypeFilter.includes(eo.doctype.toLowerCase());
 
-                return matchesSearch && matchesStatus && matchesDocType;
+                // When sortByUpdated is active, only show items with challenges updated in last 48 hours
+                const matchesRecentUpdate = !sortByUpdated ||
+                    (eo.challenges && eo.challenges.some(c => isRecentlyUpdated(c.lastUpdated)));
+
+                return matchesSearch && matchesStatus && matchesDocType && matchesRecentUpdate;
             })
             .sort((a, b) => {
                 if (sortByUpdated) {
-                    // Get the most recent update date from challenges and check if any are recent
-                    const getLatestUpdateInfo = (eo) => {
-                        if (!eo.challenges || eo.challenges.length === 0) return { timestamp: 0, hasRecent: false };
-                        const dates = eo.challenges.map(c => new Date(c.lastUpdated).getTime());
-                        const latestTimestamp = Math.max(...dates);
-                        const hasRecent = eo.challenges.some(c => isRecentlyUpdated(c.lastUpdated));
-                        return { timestamp: latestTimestamp, hasRecent };
+                    // Get the most recent update date from challenges
+                    const getLatestUpdateTimestamp = (eo) => {
+                        if (!eo.challenges || eo.challenges.length === 0) return 0;
+                        const dates = eo.challenges
+                            .filter(c => isRecentlyUpdated(c.lastUpdated))
+                            .map(c => new Date(c.lastUpdated).getTime());
+                        return dates.length > 0 ? Math.max(...dates) : 0;
                     };
 
-                    const aInfo = getLatestUpdateInfo(a);
-                    const bInfo = getLatestUpdateInfo(b);
+                    const aTimestamp = getLatestUpdateTimestamp(a);
+                    const bTimestamp = getLatestUpdateTimestamp(b);
 
-                    // If one has recent updates and the other doesn't, prioritize the recent one
-                    if (aInfo.hasRecent && !bInfo.hasRecent) return -1;
-                    if (!aInfo.hasRecent && bInfo.hasRecent) return 1;
-
-                    // If both have updates (recent or not), sort by timestamp
-                    if (aInfo.timestamp && bInfo.timestamp) {
-                        return bInfo.timestamp - aInfo.timestamp;
+                    // Sort by most recent update first
+                    if (aTimestamp !== bTimestamp) {
+                        return bTimestamp - aTimestamp;
                     }
 
-                    // If only one has any updates (recent or not), it should come first
-                    if (aInfo.timestamp && !bInfo.timestamp) return -1;
-                    if (!aInfo.timestamp && bInfo.timestamp) return 1;
-
-                    // If neither has updates, maintain original order by date
+                    // If same timestamp, maintain original order by date
                     return new Date(b.date) - new Date(a.date);
                 }
 
@@ -434,6 +433,7 @@ function App() {
                                 statusFilter={statusFilter}
                                 onStatusFilterChange={setStatusFilter}
                                 onSortByUpdated={handleSortByUpdated}
+                                sortByUpdated={sortByUpdated}
                             />
                             <DocTypeFilter
                                 docTypes={docTypeFilter}
